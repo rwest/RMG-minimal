@@ -1,0 +1,2125 @@
+
+######################################################################
+#                                                                    #
+#              RMG - Reaction Mechanism Generator                    #
+#                                                                    #
+#                                                                    #
+#  This java code was compiled by ant at:                            #
+#    2011-01-25T12:41:27
+#  The git repository was on the branch:                             #
+#    master
+#  And at the commit with the hash:                                  #
+#    862689cb337223fdc13f84248af1a33bb68ff395
+#                                                                    #
+#  For details visit:                                                #
+#    http://github.com/GreenGroup/RMG-Java/tree/862689         #
+#  To see changes since then visit:                              #
+#    http://github.com/GreenGroup/RMG-Java/compare/862689...master
+#                                                                    #
+#                                                                    #
+#                                                                    #
+#                 http://rmg.sourceforge.net/                        #
+#                                                                    #
+#                                                                    #
+#                                                                    #
+#  Copyright (c) 2002-2010                                           #
+#  Prof. William H. Green and the RMG Team:                          #
+#    Joshua W. Allen, Dr. Robert W. Ashcraft, Dr. Gregory J. Beran,  #
+#    Dr. C. Franklin Goldsmith, Michael R. Harper, Amrit Jalan,      #
+#    Gregory R. Magoon, Dr. David M. Matheu, Shamel S. Merchant,     #
+#    Jeffrey D. Mo, Sarah Petway, Sumathy Raman, Dr. Sandeep Sharma, #
+#    Dr. Kevin M. Van Geem, Dr. Jing Song, Dr. John Wen,             #
+#    Dr. Richard H. West, Andrew Wong, Dr. Hsi-Wu Wong,              #
+#    Dr. Paul E. Yelvington, Dr. Joanna Yu                           #
+#                                                                    #
+#  The RMGVE graphical user interface to the RMG database            #
+#  was written by John Robotham.                                     #
+#                                                                    #
+#  This software package incorporates parts of the following         #
+#  software packages:                                                #
+#    DASSL    - Written by Prof. Linda Petzold et al                 #
+#      http://www.cs.ucsb.edu/~cse/software.html                     #
+#    CDK      - Written by Prof. Cristoph Steinbeck et al            #
+#      http://cdk.sourceforge.net/                                   #
+#    InChI    - Available from IUPAC                                 #
+#      http://www.iupac.org/inchi/                                   #
+#    cclib                                                           #
+#      http://cclib.sourceforge.net                                  #
+#                                                                    #
+#  For more information, including how to properly cite this         #
+#  program, see http://rmg.sourceforge.net/.                         #
+#                                                                    #
+######################################################################
+
+Current local time is: 2011-01-25T12:44:01
+----------------------------------------------------------------------
+ User input:
+----------------------------------------------------------------------
+//tracks the decomposition of pure ethane, without any pressure-dependent reactions.
+
+Database: RMG_database
+
+PrimaryThermoLibrary:
+Name: RMG-minimal
+Location: primaryThermoLibrary
+END
+
+PrimaryTransportLibrary:
+Name: GRIMech3.0
+Location: GRI-Mech3.0
+END
+
+ReadRestart: no
+WriteRestart: no
+
+TemperatureModel: Constant (K) 1350
+PressureModel: Constant (atm) 1 
+
+InitialStatus:
+
+(1) C2H6 (mol/cm3) 1.0 
+1 C 0 {2,S}
+2 C 0 {1,S}
+
+END
+
+InertGas:
+N2 (mol/cm3) 0.0 
+Ar (mol/cm3) 0.0 
+END
+
+SpectroscopicDataEstimator: off
+PressureDependence: off
+
+FinishController:
+(1) Goal Conversion: C2H6 0.9
+(2) Error Tolerance: 0.1
+
+DynamicSimulator: DASSL
+Conversions: AUTO
+Atol: 1e-18
+Rtol: 1e-8
+
+PrimaryKineticLibrary:
+END
+
+ReactionLibrary:
+END
+
+SeedMechanism:
+END
+
+ChemkinUnits:
+A: moles
+Ea: kcal/mol
+
+----------------------------------------------------------------------
+
+Reading Primary Thermo Library: RMG-minimal
+Reading Primary Transport Library: GRIMech3.0
+
+Reading thermo database from /Users/rwest/XCodeProjects/RMGjava/databases/RMG_database/thermo_groups/
+Reading thermochemistry groups
+Reading radical correction groups
+Reading ring correction groups
+Reading other correction groups
+Reading gauche and 1/5 correction groups
+
+Reading Lennard-Jones database from /Users/rwest/XCodeProjects/RMGjava/databases/RMG_database/transport_groups/
+Created new species: C2H6(1)
+Reading forwards template:   Cyclic_Ether_Formation
+Generating reverse template: OH+CyclicEther_Form_Alkyl-hydroperoxyl
+Reading forwards template:   intra_OH_migration
+Reading forwards template:   H_Abstraction
+ Multiple sets of Arrhenius parameters found for: Cd_pri + H_rad.
+ Multiple sets of Arrhenius parameters found for: Cd_pri + H_rad.
+ Multiple sets of Arrhenius parameters found for: C/H2/OneDeC + H_rad.
+ Multiple sets of Arrhenius parameters found for: C/H/Cs2 + H_rad.
+ Multiple sets of Arrhenius parameters found for: Cd/H/OneDe + H_rad.
+ Multiple sets of Arrhenius parameters found for: O/H/OneDe + H_rad.
+ Multiple sets of Arrhenius parameters found for: CO/H/NonDe + C_methyl.
+ Multiple sets of Arrhenius parameters found for: C_methane + C_methyl.
+ Multiple sets of Arrhenius parameters found for: C/H3/Cs + C_methyl.
+ Multiple sets of Arrhenius parameters found for: C/H3/Cs + C_methyl.
+ Multiple sets of Arrhenius parameters found for: C/H3/Cs + C_methyl.
+ Multiple sets of Arrhenius parameters found for: C/H2/NonDeC + C_methyl.
+ Multiple sets of Arrhenius parameters found for: C/H/Cs3 + C_methyl.
+ Multiple sets of Arrhenius parameters found for: C/H/Cs3 + C_methyl.
+ Multiple sets of Arrhenius parameters found for: C/H3/Cd + C_methyl.
+ Multiple sets of Arrhenius parameters found for: C/H2/OneDeC + C_methyl.
+ Multiple sets of Arrhenius parameters found for: C/H/Cs2 + C_methyl.
+ Multiple sets of Arrhenius parameters found for: C/H2/OneDeC + C_methyl.
+ Multiple sets of Arrhenius parameters found for: C/H2/TwoDe + C_methyl.
+ Multiple sets of Arrhenius parameters found for: C/H/Cs + C_methyl.
+ Multiple sets of Arrhenius parameters found for: C/H/Cs2 + C_methyl.
+ Multiple sets of Arrhenius parameters found for: Cd_pri + C_methyl.
+ Multiple sets of Arrhenius parameters found for: Cd/H/OneDe + C_methyl.
+ Multiple sets of Arrhenius parameters found for: Cd/H/OneDe + C_methyl.
+ Multiple sets of Arrhenius parameters found for: C/H2/NonDeC + C_methyl.
+ Multiple sets of Arrhenius parameters found for: C/H2/NonDeC + C_methyl.
+ Multiple sets of Arrhenius parameters found for: C/H/Cs3 + C_methyl.
+ Multiple sets of Arrhenius parameters found for: C/H2/OneDeC + C_methyl.
+ Multiple sets of Arrhenius parameters found for: C_methane + H_rad.
+ Multiple sets of Arrhenius parameters found for: C_methane + C_methyl.
+ Multiple sets of Arrhenius parameters found for: C/H/Cs3 + H_rad.
+ Multiple sets of Arrhenius parameters found for: C/H/Cs3 + C_methyl.
+ Multiple sets of Arrhenius parameters found for: C/H/Cs3 + C_rad/Cs3.
+ Multiple sets of Arrhenius parameters found for: C/H/Cs3 + C_rad/H2/Cs.
+ Multiple sets of Arrhenius parameters found for: C/H/Cs3 + C_rad/H/NonDeC.
+ Multiple sets of Arrhenius parameters found for: C/H/Cs3 + C_rad/H/OneDeC.
+ Multiple sets of Arrhenius parameters found for: C/H/Cs3 + C_rad/Cs2.
+ Multiple sets of Arrhenius parameters found for: Cd_pri + H_rad.
+ Multiple sets of Arrhenius parameters found for: Cd_pri + C_methyl.
+ Multiple sets of Arrhenius parameters found for: Cd_pri + C_rad/H/OneDeC.
+ Multiple sets of Arrhenius parameters found for: Cd_pri + C_rad/Cs2.
+ Multiple sets of Arrhenius parameters found for: C/H3/Cd + H_rad.
+ Multiple sets of Arrhenius parameters found for: C/H3/Cd + C_methyl.
+ Multiple sets of Arrhenius parameters found for: C/H3/Cd + C_rad/H/OneDeC.
+ Multiple sets of Arrhenius parameters found for: C/H3/Cd + C_rad/Cs2.
+ Multiple sets of Arrhenius parameters found for: H2 + C_rad/H/OneDeC.
+ Multiple sets of Arrhenius parameters found for: H2 + C_rad/Cs2.
+  System temperature 1350.0K not within valid Temperature Range (300-800K) for node: H2 + O2b
+ Multiple sets of Arrhenius parameters found for: H2 + Cd_pri_rad.
+ Multiple sets of Arrhenius parameters found for: H2 + Cd_pri_rad.
+ Multiple sets of Arrhenius parameters found for: H2 + Cd_pri_rad.
+ Multiple sets of Arrhenius parameters found for: C_methane + O_pri_rad.
+ Multiple sets of Arrhenius parameters found for: C_methane + O_pri_rad.
+ Multiple sets of Arrhenius parameters found for: C/H3/Cs + O2b.
+   Replacing Kinetics for C/H3/Cs + O2b: From 300-1500K data with A=7.0E12 to 500-2000K data with A=1.005E13
+  System temperature 1350.0K not within valid Temperature Range (565-1000K) for node: C/H3/Cs + Cb_rad
+ Multiple sets of Arrhenius parameters found for: C/H3/Cs + O_pri_rad.
+   Replacing Kinetics for C/H3/Cs + O_pri_rad: From 300-1500K data with A=5930000.0 to 250-2000K data with A=1200000.0
+  System temperature 1350.0K not within valid Temperature Range (295-600K) for node: C/H3/CO + O_pri_rad
+ Multiple sets of Arrhenius parameters found for: C/H2/NonDeC + O2b.
+   Replacing Kinetics for C/H2/NonDeC + O2b: From 300-1500K data with A=7.0E12 to 300-2500K data with A=1.985E13
+ Multiple sets of Arrhenius parameters found for: C/H2/NonDeC + O_atom_triplet.
+   Replacing Kinetics for C/H2/NonDeC + O_atom_triplet: From 300-1500K data with A=23900.0 to 300-2500K data with A=23900.0
+ Multiple sets of Arrhenius parameters found for: C/H2/NonDeC + O_pri_rad.
+ Multiple sets of Arrhenius parameters found for: C/H2/NonDeC + O_rad/NonDeC.
+   Replacing Kinetics for C/H2/NonDeC + O_rad/NonDeC: From 300-1500K data with A=5.5E10 to 300-2500K data with A=7.25E10
+ Multiple sets of Arrhenius parameters found for: C/H/Cs3 + O2b.
+   Replacing Kinetics for C/H/Cs3 + O2b: From 300-1500K data with A=7.0E12 to 300-2500K data with A=3.97E13
+ Multiple sets of Arrhenius parameters found for: C/H/Cs3 + O_atom_triplet.
+   Replacing Kinetics for C/H/Cs3 + O_atom_triplet: From 300-1500K data with A=383000.0 to 300-2500K data with A=157000.0
+ Multiple sets of Arrhenius parameters found for: C/H/Cs3 + Cd_pri_rad.
+ Multiple sets of Arrhenius parameters found for: C/H/Cs3 + O_pri_rad.
+ Multiple sets of Arrhenius parameters found for: C/H/Cs3 + O_rad/NonDeC.
+   Replacing Kinetics for C/H/Cs3 + O_rad/NonDeC: From 300-1500K data with A=1.9E10 to 300-2500K data with A=2.29E10
+ Multiple sets of Arrhenius parameters found for: Cd_pri + C_rad/H2/Cs.
+ Multiple sets of Arrhenius parameters found for: Cd/H/NonDeC + H_rad.
+ Multiple sets of Arrhenius parameters found for: Cd/H/NonDeC + C_methyl.
+  System temperature 1350.0K not within valid Temperature Range (500-800K) for node: Cb_H + H_rad
+ Multiple sets of Arrhenius parameters found for: Cb_H + H_rad.
+  System temperature 1350.0K not within valid Temperature Range (650-770K) for node: Cb_H + C_rad/H2/Cs
+  System temperature 1350.0K not within valid Temperature Range (600-1100K) for node: CO/H/NonDe + O2b
+ Multiple sets of Arrhenius parameters found for: CO/H/NonDe + H_rad.
+ Multiple sets of Arrhenius parameters found for: CO/H/NonDe + C_methyl.
+  System temperature 1350.0K not within valid Temperature Range (790-810K) for node: CO/H/NonDe + C_rad/H2/Cd
+  System temperature 1350.0K not within valid Temperature Range (480-520K) for node: CO/H/NonDe + Cd_pri_rad
+  System temperature 1350.0K not within valid Temperature Range (295-600K) for node: CO/H/NonDe + O_pri_rad
+ Multiple sets of Arrhenius parameters found for: CO/H/NonDe + O_pri_rad.
+   Replacing Kinetics for CO/H/NonDe + O_pri_rad: From 295-600K data with A=2000000.0 to 300-2000K data with A=1.0E13
+  System temperature 1350.0K not within valid Temperature Range (900-1200K) for node: CO/H/NonDe + O_rad/NonDeO
+  System temperature 1350.0K not within valid Temperature Range (300-1000K) for node: O_pri + O2b
+  System temperature 1350.0K not within valid Temperature Range (298-1000K) for node: O_pri + O_atom_triplet
+ Multiple sets of Arrhenius parameters found for: O_pri + O_atom_triplet.
+   Replacing Kinetics for O_pri + O_atom_triplet: From 298-1000K data with A=2.63E9 to 300-2000K data with A=74000.0
+ Multiple sets of Arrhenius parameters found for: O_pri + C_methyl.
+  System temperature 1350.0K not within valid Temperature Range (200-700K) for node: O_pri + O_pri_rad
+  System temperature 1350.0K not within valid Temperature Range (300-1000K) for node: O/H/NonDeC + O_atom_triplet
+ Multiple sets of Arrhenius parameters found for: O/H/NonDeC + C_methyl.
+ Multiple sets of Arrhenius parameters found for: O/H/NonDeC + O_pri_rad.
+ Multiple sets of Arrhenius parameters found for: Cd_pri + O2b.
+ Multiple sets of Arrhenius parameters found for: Cd_pri + O2b.
+ Multiple sets of Arrhenius parameters found for: Cd/H/NonDeC + O2b.
+   Replacing Kinetics for Cd/H/NonDeC + O2b: From 300-1500K data with A=7.0E12 to 300-2500K data with A=1.985E13
+Reading forwards template:   R_Addition_MultipleBond
+  System temperature 1350.0K not within valid Temperature Range (200-1100K) for node: Cd/H2_Cd/H2 + H_rad
+  System temperature 1350.0K not within valid Temperature Range (1260-1310K) for node: Cd/H2_Cd/H2 + Cd_pri_rad
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Cd/H/Nd + C_methyl.
+  System temperature 1350.0K not within valid Temperature Range (762-811K) for node: Cd/H2_Cd/H/Nd + C_rad/H2/Cd
+  System temperature 1350.0K not within valid Temperature Range (743-772K) for node: Cd/H2_Cd/H/De + C_methyl
+  System temperature 1350.0K not within valid Temperature Range (712-779K) for node: Cd/H2_Cd/Nd2 + H_rad
+  System temperature 1350.0K not within valid Temperature Range (391-449K) for node: Cd/H2_Cd/Nd2 + C_methyl
+ Multiple sets of Arrhenius parameters found for: Cd/H/Nd_Cd/H2 + C_methyl.
+  System temperature 1350.0K not within valid Temperature Range (560-650K) for node: Cd/Nd2_Cd/H2 + C_methyl
+  System temperature 1350.0K not within valid Temperature Range (573-595K) for node: Cd/H2_Ca + C_methyl
+  System temperature 1350.0K not within valid Temperature Range (350-1200K) for node: Ca_Cd/H2 + H_rad
+  System temperature 1350.0K not within valid Temperature Range (996-1180K) for node: Ca_Cd/H2 + C_methyl
+  System temperature 1350.0K not within valid Temperature Range (333-363K) for node: CO/H2_O + C_rad/H2/Cs
+  System temperature 1350.0K not within valid Temperature Range (413-563K) for node: CO/Nd2_O + C_methyl
+  System temperature 1350.0K not within valid Temperature Range (370-478K) for node: Ct/H_Ct/H + C_methyl
+  System temperature 1350.0K not within valid Temperature Range (373-473K) for node: Ct/H_Ct/H + C_rad/H2/Cs
+  System temperature 1350.0K not within valid Temperature Range (363-577K) for node: Ct/H_Ct/H + C_rad/H/NonDeC
+  System temperature 1350.0K not within valid Temperature Range (373-493K) for node: Ct/H_Ct/H + C_rad/Cs3
+ Multiple sets of Arrhenius parameters found for: Ct/H_Ct/H + Cd_pri_rad.
+  System temperature 1350.0K not within valid Temperature Range (700-1300K) for node: Ct/H_Ct/H + Ct_rad
+  System temperature 1350.0K not within valid Temperature Range (298-1100K) for node: Ct/H_Ct/H + O_pri_rad
+ Multiple sets of Arrhenius parameters found for: Ct/H_Ct/H + O_pri_rad.
+   Replacing Kinetics for Ct/H_Ct/H + O_pri_rad: From 298-1100K data with A=6.05E11 to 250-2500K data with A=7.6E7
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Cd/H2 + C_methyl.
+   Replacing Kinetics for Cd/H2_Cd/H2 + C_methyl: From 300-2500K data with A=1.655E11 to 300-1500K data with A=9.69E12
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Cd/H2 + C_rad/H2/Cs.
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Cd/H2 + C_rad/H2/Cs.
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Cd/H2 + C_rad/H2/Cs.
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Cd/H2 + C_rad/H2/Cs.
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Cd/H2 + C_rad/H2/Cs.
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Cd/H2 + C_rad/Cs3.
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Cd/H2 + C_rad/Cs3.
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Cd/H2 + C_rad/H2/Cd.
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Cd/H2 + C_rad/H/OneDeC.
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Cd/H2 + C_rad/Cs2.
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Cd/H2 + Cd_pri_rad.
+   Replacing Kinetics for Cd/H2_Cd/H2 + Cd_pri_rad: From 1260-1310K data with A=1.0E11 to 300-1500K data with A=2.09E13
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Cd/H2 + C_methyl.
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Cd/H/Nd + C_methyl.
+   Replacing Kinetics for Cd/H2_Cd/H/Nd + C_methyl: From 298-1500K data with A=128000.0 to 300-1500K data with A=3.1E12
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Cd/H/Nd + C_methyl.
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Cd/Nd2 + C_methyl.
+   Replacing Kinetics for Cd/H2_Cd/Nd2 + C_methyl: From 391-449K data with A=2.51E11 to 300-1500K data with A=3.99E12
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Cd/H/De + C_methyl.
+   Replacing Kinetics for Cd/H2_Cd/H/De + C_methyl: From 743-772K data with A=3.155E10 to 300-1500K data with A=7.3E12
+ Multiple sets of Arrhenius parameters found for: Ct/H_Ct/H + C_methyl.
+   Replacing Kinetics for Ct/H_Ct/H + C_methyl: From 370-478K data with A=1.875E11 to 300-1500K data with A=4.06E13
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Ca + C_methyl.
+   Replacing Kinetics for Cd/H2_Ca + C_methyl: From 573-595K data with A=5.75E10 to 300-1500K data with A=9.23E12
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Cd/H/De + C_methyl.
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Cd/H/De + C_methyl.
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Cd/Nd/De + C_methyl.
+ Multiple sets of Arrhenius parameters found for: Cd/H/Nd_Cd/H2 + C_methyl.
+   Replacing Kinetics for Cd/H/Nd_Cd/H2 + C_methyl: From 298-1500K data with A=10000.0 to 300-1500K data with A=1.36E12
+ Multiple sets of Arrhenius parameters found for: Cd/H/Nd_Cd/H2 + C_methyl.
+ Multiple sets of Arrhenius parameters found for: Cd/H/Nd_Cd/H2 + C_methyl.
+ Multiple sets of Arrhenius parameters found for: Cd/Nd2_Cd/H2 + C_methyl.
+   Replacing Kinetics for Cd/Nd2_Cd/H2 + C_methyl: From 560-650K data with A=2.23E11 to 300-1500K data with A=1.12E12
+ Multiple sets of Arrhenius parameters found for: Cd/Nd2_Cd/H2 + C_methyl.
+ Multiple sets of Arrhenius parameters found for: Cd/H/De_Cd/H2 + C_methyl.
+ Multiple sets of Arrhenius parameters found for: Cd/H/De_Cd/H2 + C_methyl.
+ Multiple sets of Arrhenius parameters found for: Ct/De_Ct/H + C_methyl.
+ Multiple sets of Arrhenius parameters found for: Cd/Nd/De_Cd/H2 + C_methyl.
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Cd/H2 + H_rad.
+   Replacing Kinetics for Cd/H2_Cd/H2 + H_rad: From 200-1100K data with A=1.985E9 to 300-1500K data with A=7.74E13
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Cd/H/Nd + H_rad.
+   Replacing Kinetics for Cd/H2_Cd/H/Nd + H_rad: From 500-2500K data with A=1.3E13 to 300-1500K data with A=2.01E13
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Cd/Nd2 + H_rad.
+   Replacing Kinetics for Cd/H2_Cd/Nd2 + H_rad: From 712-779K data with A=6.21E12 to 300-1500K data with A=4.94E13
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Cd/H/De + H_rad.
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Cd/Nd/De + H_rad.
+ Multiple sets of Arrhenius parameters found for: Ct/H_Ct/H + H_rad.
+   Replacing Kinetics for Ct/H_Ct/H + H_rad: From 300-2000K data with A=2.75E12 to 300-1500K data with A=1.16E14
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Ca + H_rad.
+   Replacing Kinetics for Cd/H2_Ca + H_rad: From 300-1500K data with A=1.0E13 to 300-1500K data with A=6.68E13
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Ca + H_rad.
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Cd/H/De + H_rad.
+ Multiple sets of Arrhenius parameters found for: Cd/H2_Cd/Nd/De + H_rad.
+ Multiple sets of Arrhenius parameters found for: Ct/H_Ct/De + H_rad.
+ Multiple sets of Arrhenius parameters found for: Ct/H_Ct/De + H_rad.
+ Multiple sets of Arrhenius parameters found for: Cd/H/Nd_Cd/H2 + H_rad.
+   Replacing Kinetics for Cd/H/Nd_Cd/H2 + H_rad: From 500-2500K data with A=1.3E13 to 300-1500K data with A=1.18E13
+ Multiple sets of Arrhenius parameters found for: Cd/H/De_Cd/H2 + H_rad.
+ Multiple sets of Arrhenius parameters found for: Cd/Nd/De_Cd/H2 + H_rad.
+ Multiple sets of Arrhenius parameters found for: Cd/H/De_Cd/H2 + H_rad.
+ Multiple sets of Arrhenius parameters found for: Cd/Nd/De_Cd/H2 + H_rad.
+ Multiple sets of Arrhenius parameters found for: Ct/De_Ct/H + H_rad.
+Generating reverse template: Beta_Scission
+Reading forwards template:   R_Recombination
+  System temperature 1350.0K not within valid Temperature Range (278-372K) for node: H_rad
+ Multiple sets of Arrhenius parameters found for: H_rad + C_methyl.
+  System temperature 1350.0K not within valid Temperature Range (298K) for node: H_rad + C_rad/H2/Cs
+ Multiple sets of Arrhenius parameters found for: H_rad + C_rad/H/NonDeC.
+  System temperature 1350.0K not within valid Temperature Range (298K) for node: H_rad + Cd_pri_rad
+ Multiple sets of Arrhenius parameters found for: H_rad + Cd_pri_rad.
+  System temperature 1350.0K not within valid Temperature Range (300-1200K) for node: H_rad + Cb_rad
+  System temperature 1350.0K not within valid Temperature Range (1500-1900K) for node: H_rad + CO_pri_rad
+ Multiple sets of Arrhenius parameters found for: C_methyl.
+  System temperature 1350.0K not within valid Temperature Range (298K) for node: C_methyl + Cd_pri_rad
+  System temperature 1350.0K not within valid Temperature Range (300-980K) for node: C_methyl + Cb_rad
+ Multiple sets of Arrhenius parameters found for: C_methyl + Cb_rad.
+  System temperature 1350.0K not within valid Temperature Range (298K) for node: C_methyl + CO_rad/NonDe
+ Multiple sets of Arrhenius parameters found for: C_methyl + CO_rad/NonDe.
+   Replacing Kinetics for C_methyl + CO_rad/NonDe: From 298K data with A=4.2E13 to 300-2500K data with A=4.04E15
+  System temperature 1350.0K not within valid Temperature Range (300-1200K) for node: C_rad/H2/Cs
+  System temperature 1350.0K not within valid Temperature Range (200-400K) for node: C_rad/H2/Cs + O_pri_rad
+  System temperature 1350.0K not within valid Temperature Range (298K) for node: Cd_pri_rad
+  System temperature 1350.0K not within valid Temperature Range (700-1300K) for node: Cd_pri_rad + Ct_rad
+ Multiple sets of Arrhenius parameters found for: Cb_rad.
+  System temperature 1350.0K not within valid Temperature Range (298K) for node: CO_pri_rad
+  System temperature 1350.0K not within valid Temperature Range (200-400K) for node: O_pri_rad
+ Multiple sets of Arrhenius parameters found for: O2_birad + H_rad.
+   Replacing Kinetics for O2_birad + H_rad: From 298-6000K data with A=4.395E10 to 300-1500K data with A=8.15E12
+  System temperature 1350.0K not within valid Temperature Range (297-473K) for node: O2_birad + Cb_rad
+  System temperature 1350.0K not within valid Temperature Range (200-300K) for node: O2_birad + CO_rad/NonDe
+Generating reverse template: Bond_Dissociation
+Reading forwards template:   Disproportionation
+ Multiple sets of Arrhenius parameters found for: H_rad + Cmethyl_Csrad.
+  System temperature 1350.0K not within valid Temperature Range (300-1000K) for node: H_rad + Cmethyl_Orad
+  System temperature 1350.0K not within valid Temperature Range (298K) for node: O_atom_triplet + O_Csrad
+  System temperature 1350.0K not within valid Temperature Range (295K) for node: H_rad + O_Csrad
+ Multiple sets of Arrhenius parameters found for: H_rad + O_Csrad.
+   Replacing Kinetics for H_rad + O_Csrad: From 295K data with A=2.0E13 to 300-2500K data with A=6.03E12
+  System temperature 1350.0K not within valid Temperature Range (298K) for node: C_methyl + O_Csrad
+ Multiple sets of Arrhenius parameters found for: C_methyl + O_Csrad.
+   Replacing Kinetics for C_methyl + O_Csrad: From 298K data with A=8.49E13 to 300-2500K data with A=2.41E12
+  System temperature 1350.0K not within valid Temperature Range (500-900K) for node: O2_birad + C/H2/Nd_Csrad
+  System temperature 1350.0K not within valid Temperature Range (600-1000K) for node: O2_birad + C/H/NdNd_Csrad
+  System temperature 1350.0K not within valid Temperature Range (298K) for node: O2_birad + O_Csrad
+ Multiple sets of Arrhenius parameters found for: O2_birad + O_Csrad.
+ Multiple sets of Arrhenius parameters found for: O2_birad + O_Csrad.
+ Multiple sets of Arrhenius parameters found for: O2_birad + O_Csrad.
+  System temperature 1350.0K not within valid Temperature Range (250-1000K) for node: O2_birad + O_Csrad
+   Replacing Kinetics for O2_birad + O_Csrad: From 298K data with A=5.7209E12 to 250-1000K data with A=2.3413E11
+Generating reverse template: Molecular_Addition
+Reading forwards template:   1,2_Insertion
+Generating reverse template: 1,1_Elimination
+Reading forwards template:   1,3_Insertion_CO2
+Generating reverse template: 1,2_Elimination_CO2
+Reading forwards template:   1,3_Insertion_ROR
+Generating reverse template: 1,2_Elimination_ROR
+Reading forwards template:   1+2_Cycloaddition
+  System temperature 1350.0K not within valid Temperature Range (296-728K) for node: carbene + mb_db_unsub
+  System temperature 1350.0K not within valid Temperature Range (300K) for node: o_atom + mb_db_unsub
+  System temperature 1350.0K not within valid Temperature Range (300K) for node: o_atom + mb_db_monosub_Nd
+ Multiple sets of Arrhenius parameters found for: o_atom + mb_db_monosub_Nd.
+ Multiple sets of Arrhenius parameters found for: o_atom + mb_db_monosub_Nd.
+  System temperature 1350.0K not within valid Temperature Range (298-410K) for node: o_atom + mb_db_onecdisub_Nd
+  System temperature 1350.0K not within valid Temperature Range (298K) for node: o_atom + mb_db_twocdisub_Nd
+  System temperature 1350.0K not within valid Temperature Range (298K) for node: o_atom + mb_db_tetrasub_Nd
+Generating reverse template: Three_Ring_Cleavage
+Reading forwards template:   2+2_cycloaddition_Cd
+  System temperature 1350.0K not within valid Temperature Range (723-786K) for node: db + doublebond
+Generating reverse template: Four_Ring_Cleavage_Cd
+Reading forwards template:   2+2_cycloaddition_CO
+Generating reverse template: Four_Ring_Cleavage_CO
+Reading forwards template:   2+2_cycloaddition_CCO
+Generating reverse template: Four_Ring_Cleavage_CCO
+Reading forwards template:   Diels_alder_addition
+  System temperature 1350.0K not within valid Temperature Range (464-557K) for node: diene_unsub_unsub_out + diene_in_2H + ene_2H_HDe
+  System temperature 1350.0K not within valid Temperature Range (464-557K) for node: diene_unsub_unsub_out + diene_in_2H + ene_HDe_2H
+  System temperature 1350.0K not within valid Temperature Range (515-572K) for node: diene_unsub_unsub_out + diene_in_2H + ene_HNd_HDe
+  System temperature 1350.0K not within valid Temperature Range (515-572K) for node: diene_unsub_unsub_out + diene_in_2H + ene_HDe_HNd
+  System temperature 1350.0K not within valid Temperature Range (1000-1180K) for node: diene_unsub_unsub_out + diene_in_HNd + ene_unsub_unsub
+  System temperature 1350.0K not within valid Temperature Range (1000-1180K) for node: diene_unsub_unsub_out + diene_in_NdH + ene_unsub_unsub
+  System temperature 1350.0K not within valid Temperature Range (492-606K) for node: diene_unsub_unsub_out + diene_in_HNd + ene_HDe_2H
+  System temperature 1350.0K not within valid Temperature Range (492-606K) for node: diene_unsub_unsub_out + diene_in_NdH + ene_2H_HDe
+  System temperature 1350.0K not within valid Temperature Range (450-592K) for node: diene_monosubNd_monosubNd_out + diene_in_2H + ene_unsub_unsub
+  System temperature 1350.0K not within valid Temperature Range (488-606K) for node: diene_monosubNd_monosubNd_out + diene_in_2H + ene_2H_HNd
+ Multiple sets of Arrhenius parameters found for: diene_monosubNd_monosubNd_out + diene_in_2H + ene_2H_HNd.
+ Multiple sets of Arrhenius parameters found for: diene_monosubNd_monosubNd_out + diene_in_2H + ene_2H_HNd.
+ Multiple sets of Arrhenius parameters found for: diene_monosubNd_monosubNd_out + diene_in_2H + ene_2H_HNd.
+ Multiple sets of Arrhenius parameters found for: diene_monosubNd_monosubNd_out + diene_in_2H + ene_2H_HNd.
+ Multiple sets of Arrhenius parameters found for: diene_monosubNd_monosubNd_out + diene_in_2H + ene_2H_HNd.
+  System temperature 1350.0K not within valid Temperature Range (488-606K) for node: diene_monosubNd_monosubNd_out + diene_in_2H + ene_HNd_2H
+  System temperature 1350.0K not within valid Temperature Range (379-581K) for node: diene_monosubNd_monosubNd_out + diene_in_2H + ene_2H_HDe
+ Multiple sets of Arrhenius parameters found for: diene_monosubNd_monosubNd_out + diene_in_2H + ene_2H_HDe.
+ Multiple sets of Arrhenius parameters found for: diene_monosubNd_monosubNd_out + diene_in_2H + ene_2H_HDe.
+ Multiple sets of Arrhenius parameters found for: diene_monosubNd_monosubNd_out + diene_in_2H + ene_2H_HDe.
+  System temperature 1350.0K not within valid Temperature Range (379-581K) for node: diene_monosubNd_monosubNd_out + diene_in_2H + ene_HDe_2H
+  System temperature 1350.0K not within valid Temperature Range (352-423K) for node: diene_monosubNd_monosubNd_out + diene_in_2H + ene_HNd_HDe
+  System temperature 1350.0K not within valid Temperature Range (352-423K) for node: diene_monosubNd_monosubNd_out + diene_in_2H + ene_HDe_HNd
+Generating reverse template: Retro_Diels_Alder_Addition
+Reading forwards template:   intra_H_migration
+Skipping dictionary definition of group Others-R2H_S because its begins with 'others' and that has special meaning.
+Skipping dictionary definition of group Others-R3H_SS because its begins with 'others' and that has special meaning.
+Skipping dictionary definition of group Others-C_rad_out_Cs2 because its begins with 'others' and that has special meaning.
+Skipping dictionary definition of group Others-Cs_H_out_Cs2 because its begins with 'others' and that has special meaning.
+Reading forwards template:   HO2_Elimination_from_PeroxyRadical
+Reading forwards template:   Birad_recombination
+  System temperature 1350.0K not within valid Temperature Range (550-650K) for node: R6_SSSDS + C_rad_out_H/OneDe + Cpri_rad_out_2H
+Generating reverse template: Ring_Open
+Reading forwards template:   Oa_R_Recombination
+Generating reverse template: RO_Bond_Dissociation
+Reading forwards template:   R_Addition_COm
+  System temperature 1350.0K not within valid Temperature Range (345-449K) for node: COm + H_rad
+ Multiple sets of Arrhenius parameters found for: COm + H_rad.
+  System temperature 1350.0K not within valid Temperature Range (305-375K) for node: COm + H_rad
+   Replacing Kinetics for COm + H_rad: From 345-449K data with A=1.18E11 to 305-375K data with A=1.87E11
+  System temperature 1350.0K not within valid Temperature Range (300-500K) for node: COm + C_methyl
+  System temperature 1350.0K not within valid Temperature Range (295-500K) for node: COm + Cb_rad
+Generating reverse template: COM_Elimination_From_Carbonyl
+Reading forwards template:   Intra_R_Add_Exocyclic
+Generating reverse template: Ring_Open_Exo_Cycli_Radical
+Reading forwards template:   Intra_R_Add_Endocyclic
+Generating reverse template: Ring_Open_Endo_Cycli_Radical
+Reading forwards template:   1,2-Birad_to_alkene
+Generating reverse template: Alkene_to_1,2-birad
+
+Skipping reaction family "Intra_Disproportionation"
+Initial composition was not consistent: C = P/RT was not satisfied!
+The concentrations have been renormalized.
+Created reaction system 1
+
+Temperature=1350.0K
+Pressure=1.0atm
+C2H6 9.027610723545292E-6
+Ar 0.0
+N2 0.0
+
+
+
+Initializing core-edge reaction model
+Reacting C2H6(1) with the core: Cyclic_Ether_Formation
+Reacting C2H6(1) with the core: OH+CyclicEther_Form_Alkyl-hydroperoxyl
+Reacting C2H6(1) with the core: intra_OH_migration
+Reacting C2H6(1) with the core: H_Abstraction
+Reacting C2H6(1) with the core: R_Addition_MultipleBond
+Reacting C2H6(1) with the core: Beta_Scission
+Reacting C2H6(1) with the core: R_Recombination
+Reacting C2H6(1) with the core: Bond_Dissociation
+Created new species: CH3J(2)
+Created new reaction: C2H6(1) --> CH3J(2) + CH3J(2)
+Created new species: C2H5J(3)
+Created new species: HJ(4)
+Created new reaction: C2H6(1) --> C2H5J(3) + HJ(4)
+Reacting C2H6(1) with the core: Disproportionation
+Reacting C2H6(1) with the core: Molecular_Addition
+Reacting C2H6(1) with the core: 1,2_Insertion
+Reacting C2H6(1) with the core: 1,1_Elimination
+Reacting C2H6(1) with the core: 1,3_Insertion_CO2
+Reacting C2H6(1) with the core: 1,2_Elimination_CO2
+Reacting C2H6(1) with the core: 1,3_Insertion_ROR
+Reacting C2H6(1) with the core: 1,2_Elimination_ROR
+Reacting C2H6(1) with the core: 1+2_Cycloaddition
+Reacting C2H6(1) with the core: Three_Ring_Cleavage
+Reacting C2H6(1) with the core: 2+2_cycloaddition_Cd
+Reacting C2H6(1) with the core: Four_Ring_Cleavage_Cd
+Reacting C2H6(1) with the core: 2+2_cycloaddition_CO
+Reacting C2H6(1) with the core: Four_Ring_Cleavage_CO
+Reacting C2H6(1) with the core: 2+2_cycloaddition_CCO
+Reacting C2H6(1) with the core: Four_Ring_Cleavage_CCO
+Reacting C2H6(1) with the core: Diels_alder_addition
+Reacting C2H6(1) with the core: Retro_Diels_Alder_Addition
+Reacting C2H6(1) with the core: intra_H_migration
+Reacting C2H6(1) with the core: HO2_Elimination_from_PeroxyRadical
+Reacting C2H6(1) with the core: Birad_recombination
+Reacting C2H6(1) with the core: Ring_Open
+Reacting C2H6(1) with the core: Oa_R_Recombination
+Reacting C2H6(1) with the core: RO_Bond_Dissociation
+Reacting C2H6(1) with the core: R_Addition_COm
+Reacting C2H6(1) with the core: COM_Elimination_From_Carbonyl
+Reacting C2H6(1) with the core: Intra_R_Add_Exocyclic
+Reacting C2H6(1) with the core: Ring_Open_Exo_Cycli_Radical
+Reacting C2H6(1) with the core: Intra_R_Add_Endocyclic
+Reacting C2H6(1) with the core: Ring_Open_Endo_Cycli_Radical
+Reacting C2H6(1) with the core: 1,2-Birad_to_alkene
+Reacting C2H6(1) with the core: Alkene_to_1,2-birad
+Memory used: 85000192
+Free memory: 44855464
+
+Enlarging reaction model
+Time: 0.0SEC
+Unreacted species CH3J has highest flux: 0.004270590165418984
+The total number of unreacted reactions with this species is 1. Significant ones are:
+ C2H6(1)=CH3J(2)+CH3J(2)	0.002135295082709492
+
+Add a new reacted Species:CH3J
+Thermo of species at 298K (H, S, G, Cp, respectively)	34.80512710108484	46.36051258981196	20.989694349320878	9.537399999999998
+Generating reactions using reaction family templates.
+Reacting CH3J(2) with the core: Cyclic_Ether_Formation
+Reacting CH3J(2) with the core: OH+CyclicEther_Form_Alkyl-hydroperoxyl
+Reacting CH3J(2) with the core: intra_OH_migration
+Reacting CH3J(2) with the core: H_Abstraction
+Created new species: CH4(5)
+Created new reaction: C2H6(1) + CH3J(2) --> C2H5J(3) + CH4(5)
+Reacting CH3J(2) with the core: R_Addition_MultipleBond
+Reacting CH3J(2) with the core: Beta_Scission
+Reacting CH3J(2) with the core: R_Recombination
+Reacting CH3J(2) with the core: Bond_Dissociation
+Reacting CH3J(2) with the core: Disproportionation
+Reacting CH3J(2) with the core: Molecular_Addition
+Reacting CH3J(2) with the core: 1,2_Insertion
+Reacting CH3J(2) with the core: 1,1_Elimination
+Reacting CH3J(2) with the core: 1,3_Insertion_CO2
+Reacting CH3J(2) with the core: 1,2_Elimination_CO2
+Reacting CH3J(2) with the core: 1,3_Insertion_ROR
+Reacting CH3J(2) with the core: 1,2_Elimination_ROR
+Reacting CH3J(2) with the core: 1+2_Cycloaddition
+Reacting CH3J(2) with the core: Three_Ring_Cleavage
+Reacting CH3J(2) with the core: 2+2_cycloaddition_Cd
+Reacting CH3J(2) with the core: Four_Ring_Cleavage_Cd
+Reacting CH3J(2) with the core: 2+2_cycloaddition_CO
+Reacting CH3J(2) with the core: Four_Ring_Cleavage_CO
+Reacting CH3J(2) with the core: 2+2_cycloaddition_CCO
+Reacting CH3J(2) with the core: Four_Ring_Cleavage_CCO
+Reacting CH3J(2) with the core: Diels_alder_addition
+Reacting CH3J(2) with the core: Retro_Diels_Alder_Addition
+Reacting CH3J(2) with the core: intra_H_migration
+Reacting CH3J(2) with the core: HO2_Elimination_from_PeroxyRadical
+Reacting CH3J(2) with the core: Birad_recombination
+Reacting CH3J(2) with the core: Ring_Open
+Reacting CH3J(2) with the core: Oa_R_Recombination
+Reacting CH3J(2) with the core: RO_Bond_Dissociation
+Reacting CH3J(2) with the core: R_Addition_COm
+Reacting CH3J(2) with the core: COM_Elimination_From_Carbonyl
+Reacting CH3J(2) with the core: Intra_R_Add_Exocyclic
+Reacting CH3J(2) with the core: Ring_Open_Exo_Cycli_Radical
+Reacting CH3J(2) with the core: Intra_R_Add_Endocyclic
+Reacting CH3J(2) with the core: Ring_Open_Endo_Cycli_Radical
+Reacting CH3J(2) with the core: 1,2-Birad_to_alkene
+Reacting CH3J(2) with the core: Alkene_to_1,2-birad
+Memory used: 85000192
+Free memory: 42402560
+Solving reaction system...
+DEBUG: DASSL Fortran code found that edge entity 3 exceeded the model enlargement criterion.
+ODE solver integrated to 6.225573288441034E-7 sec.
+After ODE: from 0.0 SEC to 6.225573288441034E-7SEC
+Sp.#	Name         	Concentration 	Flux
+   1	C2H6         	 9.025020E-06 	-3.952140E-03
+   2	CH3J         	 2.591042E-09 	 3.952140E-03
+Exceeded largest permitted flux for convergence (tolerance=0.1): 5.589169722558755E-4
+The model core has 1 reactions and 2 species.
+The model edge has 1 reactions and 3 species.
+Species dictionary size: 5
+PDep Pruning DEBUG:
+The number of species in the model's edge, after pruning: 3
+
+Enlarging reaction model
+Time: 6.225573288441034E-7SEC
+Unreacted species C2H5J has highest flux: 5.732932645465544E-4
+The total number of unreacted reactions with this species is 2. Significant ones are:
+ C2H6(1)+CH3J(2)=C2H5J(3)+CH4(5)	5.619968678049358E-4
+ C2H6(1)=C2H5J(3)+HJ(4)	1.1296396741618506E-5
+
+Add a new reacted Species:C2H5J
+Thermo of species at 298K (H, S, G, Cp, respectively)	28.595439547284197	59.85810572515988	10.757724041186552	11.838399999999996
+Generating reactions using reaction family templates.
+Reacting C2H5J(3) with the core: Cyclic_Ether_Formation
+Reacting C2H5J(3) with the core: OH+CyclicEther_Form_Alkyl-hydroperoxyl
+Reacting C2H5J(3) with the core: intra_OH_migration
+Reacting C2H5J(3) with the core: H_Abstraction
+Created new species: C2H4JJ(6)
+Ea computed using Evans-Polanyi dHrxn(298K)=-3.7 kcal/mol and alpha=0.65.
+Created new reaction: C2H5J(3) + CH3J(2) --> C2H4JJ(6) + CH4(5)
+Ea computed using Evans-Polanyi dHrxn(298K)=-3.7 kcal/mol and alpha=0.65.
+Ea computed using Evans-Polanyi dHrxn(298K)=-3.7 kcal/mol and alpha=0.65.
+Created new reaction: C2H5J(3) + C2H5J(3) --> C2H4JJ(6) + C2H6(1)
+Reacting C2H5J(3) with the core: R_Addition_MultipleBond
+Reacting C2H5J(3) with the core: Beta_Scission
+Created new species: C2H4(7)
+Created new reaction: C2H5J(3) --> C2H4(7) + HJ(4)
+Reacting C2H5J(3) with the core: R_Recombination
+Created new species: C3H8(8)
+Created new reaction: C2H5J(3) + CH3J(2) --> C3H8(8)
+Created new species: C4H10(9)
+Created new reaction: C2H5J(3) + C2H5J(3) --> C4H10(9)
+Reacting C2H5J(3) with the core: Bond_Dissociation
+Created new reaction: C2H5J(3) --> C2H4JJ(6) + HJ(4)
+Reacting C2H5J(3) with the core: Disproportionation
+Created new reaction: CH3J(2) + C2H5J(3) --> CH4(5) + C2H4(7)
+Created new reaction: C2H5J(3) + C2H5J(3) --> C2H6(1) + C2H4(7)
+Reacting C2H5J(3) with the core: Molecular_Addition
+Reacting C2H5J(3) with the core: 1,2_Insertion
+Reacting C2H5J(3) with the core: 1,1_Elimination
+Reacting C2H5J(3) with the core: 1,3_Insertion_CO2
+Reacting C2H5J(3) with the core: 1,2_Elimination_CO2
+Reacting C2H5J(3) with the core: 1,3_Insertion_ROR
+Reacting C2H5J(3) with the core: 1,2_Elimination_ROR
+Reacting C2H5J(3) with the core: 1+2_Cycloaddition
+Reacting C2H5J(3) with the core: Three_Ring_Cleavage
+Reacting C2H5J(3) with the core: 2+2_cycloaddition_Cd
+Reacting C2H5J(3) with the core: Four_Ring_Cleavage_Cd
+Reacting C2H5J(3) with the core: 2+2_cycloaddition_CO
+Reacting C2H5J(3) with the core: Four_Ring_Cleavage_CO
+Reacting C2H5J(3) with the core: 2+2_cycloaddition_CCO
+Reacting C2H5J(3) with the core: Four_Ring_Cleavage_CCO
+Reacting C2H5J(3) with the core: Diels_alder_addition
+Reacting C2H5J(3) with the core: Retro_Diels_Alder_Addition
+Reacting C2H5J(3) with the core: intra_H_migration
+Reacting C2H5J(3) with the core: HO2_Elimination_from_PeroxyRadical
+Reacting C2H5J(3) with the core: Birad_recombination
+Reacting C2H5J(3) with the core: Ring_Open
+Reacting C2H5J(3) with the core: Oa_R_Recombination
+Reacting C2H5J(3) with the core: RO_Bond_Dissociation
+Reacting C2H5J(3) with the core: R_Addition_COm
+Reacting C2H5J(3) with the core: COM_Elimination_From_Carbonyl
+Reacting C2H5J(3) with the core: Intra_R_Add_Exocyclic
+Reacting C2H5J(3) with the core: Ring_Open_Exo_Cycli_Radical
+Reacting C2H5J(3) with the core: Intra_R_Add_Endocyclic
+Reacting C2H5J(3) with the core: Ring_Open_Endo_Cycli_Radical
+Reacting C2H5J(3) with the core: 1,2-Birad_to_alkene
+Reacting C2H5J(3) with the core: Alkene_to_1,2-birad
+Memory used: 85000192
+Free memory: 46125528
+Solving reaction system...
+DEBUG: DASSL Fortran code found that edge entity 2 exceeded the model enlargement criterion.
+ODE solver integrated to 6.388212599695761E-7 sec.
+After ODE: from 0.0 SEC to 6.388212599695761E-7SEC
+Sp.#	Name         	Concentration 	Flux
+   1	C2H6         	 9.024956E-06 	-3.936224E-03
+   2	CH3J         	 2.655191E-09 	 3.936224E-03
+   3	C2H5J        	 0.000000E+00 	 0.000000E+00
+For reaction system: 1 out of 1
+At this time: 6.388212599695761E-7SEC
+Conversion of C2H6 is:2.941188823537555E-4
+Running Time is: 0.15560000000000002 minutes.
+The model core has 1 reactions and 3 species.
+The model edge has 5 reactions and 6 species.
+After garbage collection:
+Memory used: 85000192
+Free memory: 54027936
+Exceeded largest permitted flux for convergence (tolerance=0.1): 5.566661163946392E-4
+PDep Pruning DEBUG:
+The number of species in the model's edge, after pruning: 6
+
+Enlarging reaction model
+Time: 6.388212599695761E-7SEC
+Unreacted species CH4 has highest flux: 5.759065273085085E-4
+The total number of unreacted reactions with this species is 3. Significant ones are:
+ C2H6(1)+CH3J(2)=C2H5J(3)+CH4(5)	5.759065273085085E-4
+
+Add a new reacted Species:CH4
+Thermo of species at 298K (H, S, G, Cp, respectively)	-17.899472200480727	44.463741646037974	-31.149667211000043	8.514
+Generating reactions using reaction family templates.
+Reacting CH4(5) with the core: Cyclic_Ether_Formation
+Reacting CH4(5) with the core: OH+CyclicEther_Form_Alkyl-hydroperoxyl
+Reacting CH4(5) with the core: intra_OH_migration
+Reacting CH4(5) with the core: H_Abstraction
+Reacting CH4(5) with the core: R_Addition_MultipleBond
+Reacting CH4(5) with the core: Beta_Scission
+Reacting CH4(5) with the core: R_Recombination
+Reacting CH4(5) with the core: Bond_Dissociation
+Created new reaction: CH4(5) --> HJ(4) + CH3J(2)
+Reacting CH4(5) with the core: Disproportionation
+Reacting CH4(5) with the core: Molecular_Addition
+Reacting CH4(5) with the core: 1,2_Insertion
+Reacting CH4(5) with the core: 1,1_Elimination
+Reacting CH4(5) with the core: 1,3_Insertion_CO2
+Reacting CH4(5) with the core: 1,2_Elimination_CO2
+Reacting CH4(5) with the core: 1,3_Insertion_ROR
+Reacting CH4(5) with the core: 1,2_Elimination_ROR
+Reacting CH4(5) with the core: 1+2_Cycloaddition
+Reacting CH4(5) with the core: Three_Ring_Cleavage
+Reacting CH4(5) with the core: 2+2_cycloaddition_Cd
+Reacting CH4(5) with the core: Four_Ring_Cleavage_Cd
+Reacting CH4(5) with the core: 2+2_cycloaddition_CO
+Reacting CH4(5) with the core: Four_Ring_Cleavage_CO
+Reacting CH4(5) with the core: 2+2_cycloaddition_CCO
+Reacting CH4(5) with the core: Four_Ring_Cleavage_CCO
+Reacting CH4(5) with the core: Diels_alder_addition
+Reacting CH4(5) with the core: Retro_Diels_Alder_Addition
+Reacting CH4(5) with the core: intra_H_migration
+Reacting CH4(5) with the core: HO2_Elimination_from_PeroxyRadical
+Reacting CH4(5) with the core: Birad_recombination
+Reacting CH4(5) with the core: Ring_Open
+Reacting CH4(5) with the core: Oa_R_Recombination
+Reacting CH4(5) with the core: RO_Bond_Dissociation
+Reacting CH4(5) with the core: R_Addition_COm
+Reacting CH4(5) with the core: COM_Elimination_From_Carbonyl
+Reacting CH4(5) with the core: Intra_R_Add_Exocyclic
+Reacting CH4(5) with the core: Ring_Open_Exo_Cycli_Radical
+Reacting CH4(5) with the core: Intra_R_Add_Endocyclic
+Reacting CH4(5) with the core: Ring_Open_Endo_Cycli_Radical
+Reacting CH4(5) with the core: 1,2-Birad_to_alkene
+Reacting CH4(5) with the core: Alkene_to_1,2-birad
+Memory used: 85000192
+Free memory: 50550208
+Solving reaction system...
+DEBUG: DASSL Fortran code found that edge entity 3 exceeded the model enlargement criterion.
+ODE solver integrated to 2.327683427417402E-7 sec.
+After ODE: from 0.0 SEC to 2.327683427417402E-7SEC
+Sp.#	Name         	Concentration 	Flux
+   1	C2H6         	 9.026596E-06 	-4.435404E-03
+   2	CH3J         	 9.658718E-10 	 4.016347E-03
+   3	C2H5J        	 2.463630E-11 	 2.095283E-04
+   5	CH4          	 2.463630E-11 	 2.095283E-04
+For reaction system: 1 out of 1
+At this time: 2.327683427417402E-7SEC
+Conversion of C2H6 is:1.124488522105116E-4
+Running Time is: 0.16321666666666665 minutes.
+The model core has 2 reactions and 4 species.
+The model edge has 5 reactions and 5 species.
+After garbage collection:
+Memory used: 85000192
+Free memory: 54034344
+Exceeded largest permitted flux for convergence (tolerance=0.1): 5.990964346980526E-4
+PDep Pruning DEBUG:
+The number of species in the model's edge, after pruning: 5
+
+Enlarging reaction model
+Time: 2.327683427417402E-7SEC
+Unreacted species HJ has highest flux: 6.104628672945364E-4
+The total number of unreacted reactions with this species is 4. Significant ones are:
+ C2H5J(3)=C2H4(7)+HJ(4)	5.991644924113612E-4
+ C2H6(1)=C2H5J(3)+HJ(4)	1.1298369254717324E-5
+
+Add a new reacted Species:HJ
+Thermo of species at 298K (H, S, G, Cp, respectively)	52.09701092949976	27.413740648016688	43.927716216390785	4.968
+Generating reactions using reaction family templates.
+Reacting HJ(4) with the core: Cyclic_Ether_Formation
+Reacting HJ(4) with the core: OH+CyclicEther_Form_Alkyl-hydroperoxyl
+Reacting HJ(4) with the core: intra_OH_migration
+Reacting HJ(4) with the core: H_Abstraction
+Created new species: H2(10)
+Created new reaction: C2H6(1) + HJ(4) --> C2H5J(3) + H2(10)
+Ea computed using Evans-Polanyi dHrxn(298K)=-3.1 kcal/mol and alpha=0.65.
+Created new reaction: C2H5J(3) + HJ(4) --> C2H4JJ(6) + H2(10)
+Ea computed using Evans-Polanyi dHrxn(298K)=-3.1 kcal/mol and alpha=0.65.
+Ea computed using Evans-Polanyi dHrxn(298K)=-3.1 kcal/mol and alpha=0.65.
+Created new reaction: CH4(5) + HJ(4) --> CH3J(2) + H2(10)
+Reacting HJ(4) with the core: R_Addition_MultipleBond
+Reacting HJ(4) with the core: Beta_Scission
+Reacting HJ(4) with the core: R_Recombination
+Created new reaction: HJ(4) + HJ(4) --> H2(10)
+Reacting HJ(4) with the core: Bond_Dissociation
+Reacting HJ(4) with the core: Disproportionation
+Created new reaction: HJ(4) + C2H5J(3) --> H2(10) + C2H4(7)
+Reacting HJ(4) with the core: Molecular_Addition
+Reacting HJ(4) with the core: 1,2_Insertion
+Reacting HJ(4) with the core: 1,1_Elimination
+Reacting HJ(4) with the core: 1,3_Insertion_CO2
+Reacting HJ(4) with the core: 1,2_Elimination_CO2
+Reacting HJ(4) with the core: 1,3_Insertion_ROR
+Reacting HJ(4) with the core: 1,2_Elimination_ROR
+Reacting HJ(4) with the core: 1+2_Cycloaddition
+Reacting HJ(4) with the core: Three_Ring_Cleavage
+Reacting HJ(4) with the core: 2+2_cycloaddition_Cd
+Reacting HJ(4) with the core: Four_Ring_Cleavage_Cd
+Reacting HJ(4) with the core: 2+2_cycloaddition_CO
+Reacting HJ(4) with the core: Four_Ring_Cleavage_CO
+Reacting HJ(4) with the core: 2+2_cycloaddition_CCO
+Reacting HJ(4) with the core: Four_Ring_Cleavage_CCO
+Reacting HJ(4) with the core: Diels_alder_addition
+Reacting HJ(4) with the core: Retro_Diels_Alder_Addition
+Reacting HJ(4) with the core: intra_H_migration
+Reacting HJ(4) with the core: HO2_Elimination_from_PeroxyRadical
+Reacting HJ(4) with the core: Birad_recombination
+Reacting HJ(4) with the core: Ring_Open
+Reacting HJ(4) with the core: Oa_R_Recombination
+Reacting HJ(4) with the core: RO_Bond_Dissociation
+Reacting HJ(4) with the core: R_Addition_COm
+Reacting HJ(4) with the core: COM_Elimination_From_Carbonyl
+Reacting HJ(4) with the core: Intra_R_Add_Exocyclic
+Reacting HJ(4) with the core: Ring_Open_Exo_Cycli_Radical
+Reacting HJ(4) with the core: Intra_R_Add_Endocyclic
+Reacting HJ(4) with the core: Ring_Open_Endo_Cycli_Radical
+Reacting HJ(4) with the core: 1,2-Birad_to_alkene
+Reacting HJ(4) with the core: Alkene_to_1,2-birad
+Memory used: 85000192
+Free memory: 51596736
+Solving reaction system...
+DEBUG: DASSL Fortran code found that edge entity 2 exceeded the model enlargement criterion.
+ODE solver integrated to 2.278085279513895E-7 sec.
+After ODE: from 0.0 SEC to 2.278085279513895E-7SEC
+Sp.#	Name         	Concentration 	Flux
+   1	C2H6         	 9.026612E-06 	-4.455048E-03
+   2	CH3J         	 9.459042E-10 	 4.022071E-03
+   3	C2H5J        	 2.618094E-11 	 2.164883E-04
+   5	CH4          	 2.363965E-11 	 2.056167E-04
+   4	HJ           	 2.541288E-12 	 1.087163E-05
+For reaction system: 1 out of 1
+At this time: 2.278085279513895E-7SEC
+Conversion of C2H6 is:1.105792073317069E-4
+Running Time is: 0.17153333333333334 minutes.
+The model core has 4 reactions and 5 species.
+The model edge has 7 reactions and 5 species.
+After garbage collection:
+Memory used: 85000192
+Free memory: 54026872
+Exceeded largest permitted flux for convergence (tolerance=0.1): 6.009473033016465E-4
+PDep Pruning DEBUG:
+The number of species in the model's edge, after pruning: 5
+
+Enlarging reaction model
+Time: 2.278085279513895E-7SEC
+Unreacted species C2H4 has highest flux: 6.36856099461776E-4
+The total number of unreacted reactions with this species is 4. Significant ones are:
+ C2H5J(3)=C2H4(7)+HJ(4)	6.367305880639853E-4
+
+Add a new reacted Species:C2H4
+Thermo of species at 298K (H, S, G, Cp, respectively)	12.517259395236204	52.455185705467535	-3.1143859449931224	10.374000000000002
+Generating reactions using reaction family templates.
+Reacting C2H4(7) with the core: Cyclic_Ether_Formation
+Reacting C2H4(7) with the core: OH+CyclicEther_Form_Alkyl-hydroperoxyl
+Reacting C2H4(7) with the core: intra_OH_migration
+Reacting C2H4(7) with the core: H_Abstraction
+Created new species: C2H3J(11)
+Created new reaction: C2H4(7) + CH3J(2) --> C2H3J(11) + CH4(5)
+Created new reaction: C2H4(7) + C2H5J(3) --> C2H3J(11) + C2H6(1)
+Created new reaction: C2H4(7) + HJ(4) --> C2H3J(11) + H2(10)
+Reacting C2H4(7) with the core: R_Addition_MultipleBond
+Created new species: C3H7J(12)
+Created new reaction: C2H4(7) + CH3J(2) --> C3H7J(12)
+Created new species: C4H9J(13)
+Created new reaction: C2H4(7) + C2H5J(3) --> C4H9J(13)
+Reacting C2H4(7) with the core: Beta_Scission
+Reacting C2H4(7) with the core: R_Recombination
+Reacting C2H4(7) with the core: Bond_Dissociation
+Created new reaction: C2H4(7) --> C2H3J(11) + HJ(4)
+Reacting C2H4(7) with the core: Disproportionation
+Reacting C2H4(7) with the core: Molecular_Addition
+Created new species: CH2JJ(14)
+Created new reaction: C2H4(7) + CH3J(2) --> C2H5J(3) + CH2JJ(14)
+Created new reaction: C2H4(7) + C2H5J(3) --> C2H5J(3) + C2H4JJ(6)
+Created new reaction: C2H4(7) + C2H4(7) --> C2H5J(3) + C2H3J(11)
+Reacting C2H4(7) with the core: 1,2_Insertion
+Reacting C2H4(7) with the core: 1,1_Elimination
+Reacting C2H4(7) with the core: 1,3_Insertion_CO2
+Reacting C2H4(7) with the core: 1,2_Elimination_CO2
+Reacting C2H4(7) with the core: 1,3_Insertion_ROR
+Reacting C2H4(7) with the core: 1,2_Elimination_ROR
+Reacting C2H4(7) with the core: 1+2_Cycloaddition
+Reacting C2H4(7) with the core: Three_Ring_Cleavage
+Reacting C2H4(7) with the core: 2+2_cycloaddition_Cd
+Created new species: C4H8(15)
+Created new reaction: C2H4(7) + C2H4(7) --> C4H8(15)
+Reacting C2H4(7) with the core: Four_Ring_Cleavage_Cd
+Reacting C2H4(7) with the core: 2+2_cycloaddition_CO
+Reacting C2H4(7) with the core: Four_Ring_Cleavage_CO
+Reacting C2H4(7) with the core: 2+2_cycloaddition_CCO
+Reacting C2H4(7) with the core: Four_Ring_Cleavage_CCO
+Reacting C2H4(7) with the core: Diels_alder_addition
+Reacting C2H4(7) with the core: Retro_Diels_Alder_Addition
+Reacting C2H4(7) with the core: intra_H_migration
+Reacting C2H4(7) with the core: HO2_Elimination_from_PeroxyRadical
+Reacting C2H4(7) with the core: Birad_recombination
+Reacting C2H4(7) with the core: Ring_Open
+Reacting C2H4(7) with the core: Oa_R_Recombination
+Reacting C2H4(7) with the core: RO_Bond_Dissociation
+Reacting C2H4(7) with the core: R_Addition_COm
+Reacting C2H4(7) with the core: COM_Elimination_From_Carbonyl
+Reacting C2H4(7) with the core: Intra_R_Add_Exocyclic
+Reacting C2H4(7) with the core: Ring_Open_Exo_Cycli_Radical
+Reacting C2H4(7) with the core: Intra_R_Add_Endocyclic
+Reacting C2H4(7) with the core: Ring_Open_Endo_Cycli_Radical
+Reacting C2H4(7) with the core: 1,2-Birad_to_alkene
+Reacting C2H4(7) with the core: Alkene_to_1,2-birad
+Created new reaction: C2H4(7) --> C2H4JJ(6)
+Memory used: 85000192
+Free memory: 37312336
+Solving reaction system...
+DEBUG: DASSL Fortran code found that edge entity 4 exceeded the model enlargement criterion.
+ODE solver integrated to 1.419900926414383E-7 sec.
+After ODE: from 0.0 SEC to 1.419900926414383E-7SEC
+Sp.#	Name         	Concentration 	Flux
+   1	C2H6         	 9.026984E-06 	-4.526456E-03
+   2	CH3J         	 5.962732E-10 	 4.122978E-03
+   3	C2H5J        	 2.511693E-12 	 1.848190E-05
+   5	CH4          	 9.276116E-12 	 1.303946E-04
+   4	HJ           	 9.896333E-12 	 1.324303E-04
+   7	C2H4         	 8.330378E-12 	 1.221715E-04
+For reaction system: 1 out of 1
+At this time: 1.419900926414383E-7SEC
+Conversion of C2H6 is:6.937469080170455E-5
+Running Time is: 0.18814999999999998 minutes.
+The model core has 7 reactions and 6 species.
+The model edge has 11 reactions and 9 species.
+After garbage collection:
+Memory used: 85000192
+Free memory: 53855168
+Exceeded largest permitted flux for convergence (tolerance=0.1): 6.126790314395412E-4
+PDep Pruning DEBUG:
+The number of species in the model's edge, after pruning: 9
+
+Enlarging reaction model
+Time: 1.419900926414383E-7SEC
+Unreacted species H2 has highest flux: 6.156403252803626E-4
+The total number of unreacted reactions with this species is 6. Significant ones are:
+ C2H6(1)+HJ(4)=C2H5J(3)+H2(10)	6.156398008817602E-4
+
+Add a new reacted Species:H2
+Thermo of species at 298K (H, S, G, Cp, respectively)	-0.001022941783311553	31.226424757685106	-9.30649751957347	6.95562
+Generating reactions using reaction family templates.
+Reacting H2(10) with the core: Cyclic_Ether_Formation
+Reacting H2(10) with the core: OH+CyclicEther_Form_Alkyl-hydroperoxyl
+Reacting H2(10) with the core: intra_OH_migration
+Reacting H2(10) with the core: H_Abstraction
+Reacting H2(10) with the core: R_Addition_MultipleBond
+Reacting H2(10) with the core: Beta_Scission
+Reacting H2(10) with the core: R_Recombination
+Reacting H2(10) with the core: Bond_Dissociation
+Reacting H2(10) with the core: Disproportionation
+Reacting H2(10) with the core: Molecular_Addition
+Reacting H2(10) with the core: 1,2_Insertion
+Reacting H2(10) with the core: 1,1_Elimination
+Reacting H2(10) with the core: 1,3_Insertion_CO2
+Reacting H2(10) with the core: 1,2_Elimination_CO2
+Reacting H2(10) with the core: 1,3_Insertion_ROR
+Reacting H2(10) with the core: 1,2_Elimination_ROR
+Reacting H2(10) with the core: 1+2_Cycloaddition
+Reacting H2(10) with the core: Three_Ring_Cleavage
+Reacting H2(10) with the core: 2+2_cycloaddition_Cd
+Reacting H2(10) with the core: Four_Ring_Cleavage_Cd
+Reacting H2(10) with the core: 2+2_cycloaddition_CO
+Reacting H2(10) with the core: Four_Ring_Cleavage_CO
+Reacting H2(10) with the core: 2+2_cycloaddition_CCO
+Reacting H2(10) with the core: Four_Ring_Cleavage_CCO
+Reacting H2(10) with the core: Diels_alder_addition
+Reacting H2(10) with the core: Retro_Diels_Alder_Addition
+Reacting H2(10) with the core: intra_H_migration
+Reacting H2(10) with the core: HO2_Elimination_from_PeroxyRadical
+Reacting H2(10) with the core: Birad_recombination
+Reacting H2(10) with the core: Ring_Open
+Reacting H2(10) with the core: Oa_R_Recombination
+Reacting H2(10) with the core: RO_Bond_Dissociation
+Reacting H2(10) with the core: R_Addition_COm
+Reacting H2(10) with the core: COM_Elimination_From_Carbonyl
+Reacting H2(10) with the core: Intra_R_Add_Exocyclic
+Reacting H2(10) with the core: Ring_Open_Exo_Cycli_Radical
+Reacting H2(10) with the core: Intra_R_Add_Endocyclic
+Reacting H2(10) with the core: Ring_Open_Endo_Cycli_Radical
+Reacting H2(10) with the core: 1,2-Birad_to_alkene
+Reacting H2(10) with the core: Alkene_to_1,2-birad
+Memory used: 85000192
+Free memory: 52465976
+Solving reaction system...
+DEBUG: DASSL Fortran code found that edge entity 5 exceeded the model enlargement criterion.
+ODE solver integrated to 5.452861890327082E-5 sec.
+After ODE: from 0.0 SEC to 5.452861890327082E-5SEC
+Sp.#	Name         	Concentration 	Flux
+   1	C2H6         	 5.209467E-06 	-4.415816E-02
+   2	CH3J         	 4.241841E-09 	-2.509588E-05
+   3	C2H5J        	 2.164104E-09 	 6.112154E-06
+   5	CH4          	 9.444106E-08 	 1.340398E-03
+   4	HJ           	 7.593175E-10 	-2.620488E-06
+   7	C2H4         	 1.881528E-06 	 2.175260E-02
+  10	H2           	 1.835010E-06 	 2.108677E-02
+For reaction system: 1 out of 1
+At this time: 5.452861890327082E-5SEC
+Conversion of C2H6 is:0.42294064626447136
+Running Time is: 0.19818333333333332 minutes.
+The model core has 11 reactions and 7 species.
+The model edge has 9 reactions and 8 species.
+After garbage collection:
+Memory used: 85000192
+Free memory: 53861280
+Exceeded largest permitted flux for convergence (tolerance=0.1): 0.005356834689698531
+PDep Pruning DEBUG:
+The number of species in the model's edge, after pruning: 8
+
+Enlarging reaction model
+Time: 5.452861890327082E-5SEC
+Unreacted species C3H7J has highest flux: 0.005398825130544702
+The total number of unreacted reactions with this species is 1. Significant ones are:
+ C2H4(7)+CH3J(2)=C3H7J(12)	0.005398825130544702
+
+Add a new reacted Species:C3H7J
+Thermo of species at 298K (H, S, G, Cp, respectively)	23.665109421431733	69.2743850543214	3.021342675243959	17.3226
+Generating reactions using reaction family templates.
+Reacting C3H7J(12) with the core: Cyclic_Ether_Formation
+Reacting C3H7J(12) with the core: OH+CyclicEther_Form_Alkyl-hydroperoxyl
+Reacting C3H7J(12) with the core: intra_OH_migration
+Reacting C3H7J(12) with the core: H_Abstraction
+Created new reaction: C2H6(1) + C3H7J(12) --> C2H5J(3) + C3H8(8)
+Created new species: C3H6JJ(16)
+Ea computed using Evans-Polanyi dHrxn(298K)=-6.4 kcal/mol and alpha=0.65.
+Created new reaction: C3H7J(12) + CH3J(2) --> C3H6JJ(16) + CH4(5)
+Ea computed using Evans-Polanyi dHrxn(298K)=-6.4 kcal/mol and alpha=0.65.
+Created new species: C3H6JJ(17)
+Created new reaction: C3H7J(12) + CH3J(2) --> C3H6JJ(17) + CH4(5)
+Ea computed using Evans-Polanyi dHrxn(298K)=-2.6 kcal/mol and alpha=0.01.
+Created new reaction: C3H7J(12) + C2H5J(3) --> C3H6JJ(16) + C2H6(1)
+Ea computed using Evans-Polanyi dHrxn(298K)=-2.6 kcal/mol and alpha=0.01.
+Created new reaction: C3H7J(12) + C2H5J(3) --> C3H6JJ(17) + C2H6(1)
+Created new reaction: C2H5J(3) + C3H7J(12) --> C2H4JJ(6) + C3H8(8)
+Created new reaction: CH4(5) + C3H7J(12) --> CH3J(2) + C3H8(8)
+Ea computed using Evans-Polanyi dHrxn(298K)=-5.8 kcal/mol and alpha=0.65.
+Created new reaction: C3H7J(12) + HJ(4) --> C3H6JJ(16) + H2(10)
+Ea computed using Evans-Polanyi dHrxn(298K)=-5.8 kcal/mol and alpha=0.65.
+Created new reaction: C3H7J(12) + HJ(4) --> C3H6JJ(17) + H2(10)
+Created new reaction: C2H4(7) + C3H7J(12) --> C2H3J(11) + C3H8(8)
+Created new reaction: H2(10) + C3H7J(12) --> HJ(4) + C3H8(8)
+Ea computed using Evans-Polanyi dHrxn(298K)=-2.6 kcal/mol and alpha=0.01.
+Created new reaction: C3H7J(12) + C3H7J(12) --> C3H6JJ(16) + C3H8(8)
+Ea computed using Evans-Polanyi dHrxn(298K)=-2.6 kcal/mol and alpha=0.01.
+Created new reaction: C3H7J(12) + C3H7J(12) --> C3H6JJ(17) + C3H8(8)
+Ea computed using Evans-Polanyi dHrxn(298K)=-2.6 kcal/mol and alpha=0.01.
+Ea computed using Evans-Polanyi dHrxn(298K)=-2.6 kcal/mol and alpha=0.01.
+Reacting C3H7J(12) with the core: R_Addition_MultipleBond
+Created new species: C5H11J(18)
+Created new reaction: C2H4(7) + C3H7J(12) --> C5H11J(18)
+Reacting C3H7J(12) with the core: Beta_Scission
+Created new species: C3H6(19)
+Created new reaction: C3H7J(12) --> C3H6(19) + HJ(4)
+Reacting C3H7J(12) with the core: R_Recombination
+Created new reaction: C3H7J(12) + CH3J(2) --> C4H10(9)
+Created new species: C5H12(20)
+Created new reaction: C3H7J(12) + C2H5J(3) --> C5H12(20)
+Created new reaction: C3H7J(12) + HJ(4) --> C3H8(8)
+Created new species: C6H14(21)
+Created new reaction: C3H7J(12) + C3H7J(12) --> C6H14(21)
+Reacting C3H7J(12) with the core: Bond_Dissociation
+Created new reaction: C3H7J(12) --> C3H6JJ(16) + HJ(4)
+Created new reaction: C3H7J(12) --> C2H4JJ(6) + CH3J(2)
+Created new reaction: C3H7J(12) --> C3H6JJ(17) + HJ(4)
+Reacting C3H7J(12) with the core: Disproportionation
+Created new reaction: CH3J(2) + C3H7J(12) --> CH4(5) + C3H6(19)
+Created new reaction: C3H7J(12) + C2H5J(3) --> C3H8(8) + C2H4(7)
+Created new reaction: C2H5J(3) + C3H7J(12) --> C2H6(1) + C3H6(19)
+Created new reaction: HJ(4) + C3H7J(12) --> H2(10) + C3H6(19)
+Created new reaction: C3H7J(12) + C3H7J(12) --> C3H8(8) + C3H6(19)
+Reacting C3H7J(12) with the core: Molecular_Addition
+Created new reaction: C2H4(7) + C3H7J(12) --> C2H5J(3) + C3H6JJ(16)
+Created new reaction: C2H4(7) + C3H7J(12) --> C2H5J(3) + C3H6JJ(17)
+Reacting C3H7J(12) with the core: 1,2_Insertion
+Reacting C3H7J(12) with the core: 1,1_Elimination
+Reacting C3H7J(12) with the core: 1,3_Insertion_CO2
+Reacting C3H7J(12) with the core: 1,2_Elimination_CO2
+Reacting C3H7J(12) with the core: 1,3_Insertion_ROR
+Reacting C3H7J(12) with the core: 1,2_Elimination_ROR
+Reacting C3H7J(12) with the core: 1+2_Cycloaddition
+Reacting C3H7J(12) with the core: Three_Ring_Cleavage
+Reacting C3H7J(12) with the core: 2+2_cycloaddition_Cd
+Reacting C3H7J(12) with the core: Four_Ring_Cleavage_Cd
+Reacting C3H7J(12) with the core: 2+2_cycloaddition_CO
+Reacting C3H7J(12) with the core: Four_Ring_Cleavage_CO
+Reacting C3H7J(12) with the core: 2+2_cycloaddition_CCO
+Reacting C3H7J(12) with the core: Four_Ring_Cleavage_CCO
+Reacting C3H7J(12) with the core: Diels_alder_addition
+Reacting C3H7J(12) with the core: Retro_Diels_Alder_Addition
+Reacting C3H7J(12) with the core: intra_H_migration
+Created new species: C3H7J(22)
+Created new reaction: C3H7J(12) --> C3H7J(22)
+Reacting C3H7J(12) with the core: HO2_Elimination_from_PeroxyRadical
+Reacting C3H7J(12) with the core: Birad_recombination
+Reacting C3H7J(12) with the core: Ring_Open
+Reacting C3H7J(12) with the core: Oa_R_Recombination
+Reacting C3H7J(12) with the core: RO_Bond_Dissociation
+Reacting C3H7J(12) with the core: R_Addition_COm
+Reacting C3H7J(12) with the core: COM_Elimination_From_Carbonyl
+Reacting C3H7J(12) with the core: Intra_R_Add_Exocyclic
+Reacting C3H7J(12) with the core: Ring_Open_Exo_Cycli_Radical
+Reacting C3H7J(12) with the core: Intra_R_Add_Endocyclic
+Reacting C3H7J(12) with the core: Ring_Open_Endo_Cycli_Radical
+Reacting C3H7J(12) with the core: 1,2-Birad_to_alkene
+Reacting C3H7J(12) with the core: Alkene_to_1,2-birad
+Memory used: 85000192
+Free memory: 42249760
+Solving reaction system...
+DEBUG: DASSL Fortran code found that edge entity 4 exceeded the model enlargement criterion.
+ODE solver integrated to 1.100246907839572E-4 sec.
+After ODE: from 0.0 SEC to 1.100246907839572E-4SEC
+Sp.#	Name         	Concentration 	Flux
+   1	C2H6         	 3.484417E-06 	-2.184843E-02
+   2	CH3J         	 3.218856E-09 	-1.361527E-05
+   3	C2H5J        	 2.278274E-09 	-3.987939E-07
+   5	CH4          	 1.551854E-07 	 9.040583E-04
+   4	HJ           	 6.423094E-10 	-1.705695E-06
+   7	C2H4         	 2.729319E-06 	 1.070573E-02
+  10	H2           	 2.652547E-06 	 1.025436E-02
+  12	C3H7J        	 2.063415E-12 	-6.341638E-10
+For reaction system: 1 out of 1
+At this time: 1.100246907839572E-4SEC
+Conversion of C2H6 is:0.6140266144932406
+Running Time is: 0.2182 minutes.
+The model core has 12 reactions and 8 species.
+The model edge has 23 reactions and 14 species.
+After garbage collection:
+Memory used: 85000192
+Free memory: 53592888
+Exceeded largest permitted flux for convergence (tolerance=0.1): 0.0026418480243125624
+PDep Pruning DEBUG:
+The number of species in the model's edge, after pruning: 14
+
+Enlarging reaction model
+Time: 1.100246907839572E-4SEC
+Unreacted species C2H3J has highest flux: 0.0026753569107459043
+The total number of unreacted reactions with this species is 6. Significant ones are:
+ C2H4(7)+HJ(4)=C2H3J(11)+H2(10)	8.011294692619009E-4
+ C2H4(7)+CH3J(2)=C2H3J(11)+CH4(5)	0.0018637864116689206
+
+Add a new reacted Species:C2H3J
+Thermo of species at 298K (H, S, G, Cp, respectively)	71.61133477276016	56.59941411043555	54.744709367850376	10.246200000000002
+Generating reactions using reaction family templates.
+Reacting C2H3J(11) with the core: Cyclic_Ether_Formation
+Reacting C2H3J(11) with the core: OH+CyclicEther_Form_Alkyl-hydroperoxyl
+Reacting C2H3J(11) with the core: intra_OH_migration
+Reacting C2H3J(11) with the core: H_Abstraction
+Created new species: C2H2JJ(23)
+Created new reaction: C2H3J(11) + CH3J(2) --> C2H2JJ(23) + CH4(5)
+Created new reaction: C2H3J(11) + C2H5J(3) --> C2H2JJ(23) + C2H6(1)
+Ea computed using Evans-Polanyi dHrxn(298K)=-10.1 kcal/mol and alpha=0.01.
+Created new reaction: C2H5J(3) + C2H3J(11) --> C2H4JJ(6) + C2H4(7)
+Ea computed using Evans-Polanyi dHrxn(298K)=-10.1 kcal/mol and alpha=0.01.
+Ea computed using Evans-Polanyi dHrxn(298K)=-10.1 kcal/mol and alpha=0.01.
+Created new reaction: C2H3J(11) + HJ(4) --> C2H2JJ(23) + H2(10)
+Created new reaction: C2H3J(11) + C3H7J(12) --> C2H2JJ(23) + C3H8(8)
+Ea computed using Evans-Polanyi dHrxn(298K)=-12.7 kcal/mol and alpha=0.01.
+Created new reaction: C3H7J(12) + C2H3J(11) --> C3H6JJ(16) + C2H4(7)
+Ea computed using Evans-Polanyi dHrxn(298K)=-12.7 kcal/mol and alpha=0.01.
+Created new reaction: C3H7J(12) + C2H3J(11) --> C3H6JJ(17) + C2H4(7)
+Created new reaction: C2H3J(11) + C2H3J(11) --> C2H2JJ(23) + C2H4(7)
+Reacting C2H3J(11) with the core: R_Addition_MultipleBond
+Created new species: C4H7J(24)
+Created new reaction: C2H4(7) + C2H3J(11) --> C4H7J(24)
+Reacting C2H3J(11) with the core: Beta_Scission
+Created new species: C2H2(25)
+Created new reaction: C2H3J(11) --> C2H2(25) + HJ(4)
+Reacting C2H3J(11) with the core: R_Recombination
+Created new reaction: C2H3J(11) + CH3J(2) --> C3H6(19)
+Created new species: C4H8(26)
+Created new reaction: C2H3J(11) + C2H5J(3) --> C4H8(26)
+Created new species: C5H10(27)
+Created new reaction: C2H3J(11) + C3H7J(12) --> C5H10(27)
+Created new species: C4H6(28)
+Created new reaction: C2H3J(11) + C2H3J(11) --> C4H6(28)
+Reacting C2H3J(11) with the core: Bond_Dissociation
+Created new reaction: C2H3J(11) --> C2H2JJ(23) + HJ(4)
+Reacting C2H3J(11) with the core: Disproportionation
+Created new reaction: C2H3J(11) + C3H7J(12) --> C2H4(7) + C3H6(19)
+Reacting C2H3J(11) with the core: Molecular_Addition
+Created new reaction: C2H4(7) + C2H3J(11) --> C2H5J(3) + C2H2JJ(23)
+Reacting C2H3J(11) with the core: 1,2_Insertion
+Reacting C2H3J(11) with the core: 1,1_Elimination
+Reacting C2H3J(11) with the core: 1,3_Insertion_CO2
+Reacting C2H3J(11) with the core: 1,2_Elimination_CO2
+Reacting C2H3J(11) with the core: 1,3_Insertion_ROR
+Reacting C2H3J(11) with the core: 1,2_Elimination_ROR
+Reacting C2H3J(11) with the core: 1+2_Cycloaddition
+Reacting C2H3J(11) with the core: Three_Ring_Cleavage
+Reacting C2H3J(11) with the core: 2+2_cycloaddition_Cd
+Reacting C2H3J(11) with the core: Four_Ring_Cleavage_Cd
+Reacting C2H3J(11) with the core: 2+2_cycloaddition_CO
+Reacting C2H3J(11) with the core: Four_Ring_Cleavage_CO
+Reacting C2H3J(11) with the core: 2+2_cycloaddition_CCO
+Reacting C2H3J(11) with the core: Four_Ring_Cleavage_CCO
+Reacting C2H3J(11) with the core: Diels_alder_addition
+Reacting C2H3J(11) with the core: Retro_Diels_Alder_Addition
+Reacting C2H3J(11) with the core: intra_H_migration
+Reacting C2H3J(11) with the core: HO2_Elimination_from_PeroxyRadical
+Reacting C2H3J(11) with the core: Birad_recombination
+Reacting C2H3J(11) with the core: Ring_Open
+Reacting C2H3J(11) with the core: Oa_R_Recombination
+Reacting C2H3J(11) with the core: RO_Bond_Dissociation
+Reacting C2H3J(11) with the core: R_Addition_COm
+Reacting C2H3J(11) with the core: COM_Elimination_From_Carbonyl
+Reacting C2H3J(11) with the core: Intra_R_Add_Exocyclic
+Reacting C2H3J(11) with the core: Ring_Open_Exo_Cycli_Radical
+Reacting C2H3J(11) with the core: Intra_R_Add_Endocyclic
+Reacting C2H3J(11) with the core: Ring_Open_Endo_Cycli_Radical
+Reacting C2H3J(11) with the core: 1,2-Birad_to_alkene
+Reacting C2H3J(11) with the core: Alkene_to_1,2-birad
+Memory used: 85000192
+Free memory: 42385896
+Solving reaction system...
+DEBUG: DASSL Fortran code found that edge entity 16 exceeded the model enlargement criterion.
+ODE solver integrated to 8.8696774282078E-6 sec.
+After ODE: from 0.0 SEC to 8.8696774282078E-6SEC
+Sp.#	Name         	Concentration 	Flux
+   1	C2H6         	 8.079803E-06 	-1.569822E-01
+   2	CH3J         	 3.920178E-09 	-3.172409E-04
+   3	C2H5J        	 2.426423E-09 	 1.813096E-04
+   5	CH4          	 2.166968E-08 	 3.182325E-03
+   4	HJ           	 1.433722E-09 	 5.193215E-05
+   7	C2H4         	 4.637538E-07 	 7.762465E-02
+  10	H2           	 4.541283E-07 	 7.619481E-02
+  12	C3H7J        	 4.269822E-13 	 3.691937E-08
+  11	C2H3J        	 4.750224E-10 	 6.440135E-05
+For reaction system: 1 out of 1
+At this time: 8.8696774282078E-6SEC
+Conversion of C2H6 is:0.10498985125240123
+Running Time is: 0.23296666666666666 minutes.
+The model core has 17 reactions and 9 species.
+The model edge has 29 reactions and 19 species.
+After garbage collection:
+Memory used: 85000192
+Free memory: 53445392
+Exceeded largest permitted flux for convergence (tolerance=0.1): 0.019101026590739218
+PDep Pruning DEBUG:
+The number of species in the model's edge, after pruning: 19
+
+Enlarging reaction model
+Time: 8.8696774282078E-6SEC
+Unreacted species C2H2 has highest flux: 0.019172474611408974
+The total number of unreacted reactions with this species is 1. Significant ones are:
+ C2H3J(11)=C2H2(25)+HJ(4)	0.019172474611408974
+
+Add a new reacted Species:C2H2
+Thermo of species at 298K (H, S, G, Cp, respectively)	53.853039132925915	48.0127161544068	39.545249718912686	10.96
+Generating reactions using reaction family templates.
+Reacting C2H2(25) with the core: Cyclic_Ether_Formation
+Reacting C2H2(25) with the core: OH+CyclicEther_Form_Alkyl-hydroperoxyl
+Reacting C2H2(25) with the core: intra_OH_migration
+Reacting C2H2(25) with the core: H_Abstraction
+Created new species: C2HJ(29)
+Created new reaction: C2H2(25) + CH3J(2) --> C2HJ(29) + CH4(5)
+Created new reaction: C2H2(25) + C2H5J(3) --> C2HJ(29) + C2H6(1)
+Created new reaction: C2H2(25) + HJ(4) --> C2HJ(29) + H2(10)
+Created new reaction: C2H2(25) + C3H7J(12) --> C2HJ(29) + C3H8(8)
+Created new reaction: C2H2(25) + C2H3J(11) --> C2HJ(29) + C2H4(7)
+Reacting C2H2(25) with the core: R_Addition_MultipleBond
+Created new species: C3H5J(30)
+Created new reaction: C2H2(25) + CH3J(2) --> C3H5J(30)
+Created new species: C4H7J(31)
+Created new reaction: C2H2(25) + C2H5J(3) --> C4H7J(31)
+Created new species: C5H9J(32)
+Created new reaction: C2H2(25) + C3H7J(12) --> C5H9J(32)
+Created new species: C4H5J(33)
+Created new reaction: C2H2(25) + C2H3J(11) --> C4H5J(33)
+Reacting C2H2(25) with the core: Beta_Scission
+Reacting C2H2(25) with the core: R_Recombination
+Reacting C2H2(25) with the core: Bond_Dissociation
+Created new reaction: C2H2(25) --> C2HJ(29) + HJ(4)
+Reacting C2H2(25) with the core: Disproportionation
+Reacting C2H2(25) with the core: Molecular_Addition
+Created new reaction: C2H4(7) + C2H2(25) --> C2H5J(3) + C2HJ(29)
+Reacting C2H2(25) with the core: 1,2_Insertion
+Reacting C2H2(25) with the core: 1,1_Elimination
+Reacting C2H2(25) with the core: 1,3_Insertion_CO2
+Reacting C2H2(25) with the core: 1,2_Elimination_CO2
+Reacting C2H2(25) with the core: 1,3_Insertion_ROR
+Reacting C2H2(25) with the core: 1,2_Elimination_ROR
+Reacting C2H2(25) with the core: 1+2_Cycloaddition
+Reacting C2H2(25) with the core: Three_Ring_Cleavage
+Reacting C2H2(25) with the core: 2+2_cycloaddition_Cd
+Reacting C2H2(25) with the core: Four_Ring_Cleavage_Cd
+Reacting C2H2(25) with the core: 2+2_cycloaddition_CO
+Reacting C2H2(25) with the core: Four_Ring_Cleavage_CO
+Reacting C2H2(25) with the core: 2+2_cycloaddition_CCO
+Reacting C2H2(25) with the core: Four_Ring_Cleavage_CCO
+Reacting C2H2(25) with the core: Diels_alder_addition
+Reacting C2H2(25) with the core: Retro_Diels_Alder_Addition
+Reacting C2H2(25) with the core: intra_H_migration
+Reacting C2H2(25) with the core: HO2_Elimination_from_PeroxyRadical
+Reacting C2H2(25) with the core: Birad_recombination
+Reacting C2H2(25) with the core: Ring_Open
+Reacting C2H2(25) with the core: Oa_R_Recombination
+Reacting C2H2(25) with the core: RO_Bond_Dissociation
+Reacting C2H2(25) with the core: R_Addition_COm
+Reacting C2H2(25) with the core: COM_Elimination_From_Carbonyl
+Reacting C2H2(25) with the core: Intra_R_Add_Exocyclic
+Reacting C2H2(25) with the core: Ring_Open_Exo_Cycli_Radical
+Reacting C2H2(25) with the core: Intra_R_Add_Endocyclic
+Reacting C2H2(25) with the core: Ring_Open_Endo_Cycli_Radical
+Reacting C2H2(25) with the core: 1,2-Birad_to_alkene
+Reacting C2H2(25) with the core: Alkene_to_1,2-birad
+Memory used: 85000192
+Free memory: 48205248
+Solving reaction system...
+DEBUG: DASSL Fortran code found that edge entity 15 exceeded the model enlargement criterion.
+ODE solver integrated to 7.614560308258643E-5 sec.
+After ODE: from 0.0 SEC to 7.614560308258643E-5SEC
+Sp.#	Name         	Concentration 	Flux
+   1	C2H6         	 2.874524E-06 	-2.943734E-02
+   2	CH3J         	 6.099225E-10 	-5.974139E-06
+   3	C2H5J        	 3.712597E-09 	-1.392102E-05
+   5	CH4          	 1.376198E-07 	 9.724680E-04
+   4	HJ           	 1.085684E-09 	-6.305778E-06
+   7	C2H4         	 2.699740E-06 	 1.002362E-02
+  10	H2           	 3.084258E-06 	 1.548932E-02
+  12	C3H7J        	 3.867479E-13 	-2.352247E-09
+  11	C2H3J        	 2.154010E-10 	 1.073353E-06
+  25	C2H2         	 2.258452E-07 	 2.977070E-03
+For reaction system: 1 out of 1
+At this time: 7.614560308258643E-5SEC
+Conversion of C2H6 is:0.6815852913606297
+Running Time is: 0.24545 minutes.
+The model core has 18 reactions and 10 species.
+The model edge has 34 reactions and 23 species.
+After garbage collection:
+Memory used: 85000192
+Free memory: 53344216
+Exceeded largest permitted flux for convergence (tolerance=0.1): 0.003488205895538133
+PDep Pruning DEBUG:
+The number of species in the model's edge, after pruning: 23
+
+Enlarging reaction model
+Time: 7.614560308258643E-5SEC
+Unreacted species C4H7J has highest flux: 0.0034982811458284255
+The total number of unreacted reactions with this species is 1. Significant ones are:
+ C2H4(7)+C2H3J(11)=C4H7J(24)	0.0034982811458284255
+
+Add a new reacted Species:C4H7J
+Thermo of species at 298K (H, S, G, Cp, respectively)	48.882184515366674	77.00525233362119	25.93461931994756	20.242
+Generating reactions using reaction family templates.
+Reacting C4H7J(24) with the core: Cyclic_Ether_Formation
+Reacting C4H7J(24) with the core: OH+CyclicEther_Form_Alkyl-hydroperoxyl
+Reacting C4H7J(24) with the core: intra_OH_migration
+Reacting C4H7J(24) with the core: H_Abstraction
+Created new reaction: C2H6(1) + C4H7J(24) --> C2H5J(3) + C4H8(26)
+Created new species: C4H6JJ(34)
+Ea computed using Evans-Polanyi dHrxn(298K)=-32.6 kcal/mol and alpha=0.65.
+Ea raised from -8.2 kcal/mol to 0.0.
+Created new reaction: C4H7J(24) + CH3J(2) --> C4H6JJ(34) + CH4(5)
+Ea computed using Evans-Polanyi dHrxn(298K)=-32.6 kcal/mol and alpha=0.65.
+Ea raised from -8.2 kcal/mol to 0.0.
+Created new species: C4H6JJ(35)
+Created new reaction: C4H7J(24) + CH3J(2) --> C4H6JJ(35) + CH4(5)
+Created new species: C4H6JJ(36)
+Created new reaction: C4H7J(24) + CH3J(2) --> C4H6JJ(36) + CH4(5)
+Ea computed using Evans-Polanyi dHrxn(298K)=-28.9 kcal/mol and alpha=0.01.
+Created new reaction: C4H7J(24) + C2H5J(3) --> C4H6JJ(34) + C2H6(1)
+Ea computed using Evans-Polanyi dHrxn(298K)=-28.9 kcal/mol and alpha=0.01.
+Created new reaction: C4H7J(24) + C2H5J(3) --> C4H6JJ(35) + C2H6(1)
+Created new reaction: C4H7J(24) + C2H5J(3) --> C4H6JJ(36) + C2H6(1)
+Created new reaction: C2H5J(3) + C4H7J(24) --> C2H4JJ(6) + C4H8(26)
+Created new reaction: CH4(5) + C4H7J(24) --> CH3J(2) + C4H8(26)
+Ea computed using Evans-Polanyi dHrxn(298K)=-32.0 kcal/mol and alpha=0.65.
+Ea raised from -11.4 kcal/mol to 0.0.
+Created new reaction: C4H7J(24) + HJ(4) --> C4H6JJ(34) + H2(10)
+Ea computed using Evans-Polanyi dHrxn(298K)=-32.0 kcal/mol and alpha=0.65.
+Ea raised from -11.4 kcal/mol to 0.0.
+Created new reaction: C4H7J(24) + HJ(4) --> C4H6JJ(35) + H2(10)
+Created new reaction: C4H7J(24) + HJ(4) --> C4H6JJ(36) + H2(10)
+Created new reaction: C2H4(7) + C4H7J(24) --> C2H3J(11) + C4H8(26)
+Created new reaction: H2(10) + C4H7J(24) --> HJ(4) + C4H8(26)
+Ea computed using Evans-Polanyi dHrxn(298K)=-28.9 kcal/mol and alpha=0.01.
+Created new reaction: C4H7J(24) + C3H7J(12) --> C4H6JJ(34) + C3H8(8)
+Ea computed using Evans-Polanyi dHrxn(298K)=-28.9 kcal/mol and alpha=0.01.
+Created new reaction: C4H7J(24) + C3H7J(12) --> C4H6JJ(35) + C3H8(8)
+Created new reaction: C4H7J(24) + C3H7J(12) --> C4H6JJ(36) + C3H8(8)
+Ea computed using Evans-Polanyi dHrxn(298K)=-2.6 kcal/mol and alpha=0.01.
+Created new reaction: C3H7J(12) + C4H7J(24) --> C3H6JJ(16) + C4H8(26)
+Ea computed using Evans-Polanyi dHrxn(298K)=-2.6 kcal/mol and alpha=0.01.
+Created new reaction: C3H7J(12) + C4H7J(24) --> C3H6JJ(17) + C4H8(26)
+Ea computed using Evans-Polanyi dHrxn(298K)=-39.0 kcal/mol and alpha=0.01.
+Created new reaction: C4H7J(24) + C2H3J(11) --> C4H6JJ(34) + C2H4(7)
+Ea computed using Evans-Polanyi dHrxn(298K)=-39.0 kcal/mol and alpha=0.01.
+Created new reaction: C4H7J(24) + C2H3J(11) --> C4H6JJ(35) + C2H4(7)
+Created new reaction: C4H7J(24) + C2H3J(11) --> C4H6JJ(36) + C2H4(7)
+Created new reaction: C2H3J(11) + C4H7J(24) --> C2H2JJ(23) + C4H8(26)
+Created new reaction: C2H2(25) + C4H7J(24) --> C2HJ(29) + C4H8(26)
+Ea computed using Evans-Polanyi dHrxn(298K)=-28.9 kcal/mol and alpha=0.01.
+Created new reaction: C4H7J(24) + C4H7J(24) --> C4H6JJ(34) + C4H8(26)
+Ea computed using Evans-Polanyi dHrxn(298K)=-28.9 kcal/mol and alpha=0.01.
+Created new reaction: C4H7J(24) + C4H7J(24) --> C4H6JJ(35) + C4H8(26)
+Created new reaction: C4H7J(24) + C4H7J(24) --> C4H6JJ(36) + C4H8(26)
+Ea computed using Evans-Polanyi dHrxn(298K)=-28.9 kcal/mol and alpha=0.01.
+Ea computed using Evans-Polanyi dHrxn(298K)=-28.9 kcal/mol and alpha=0.01.
+Reacting C4H7J(24) with the core: R_Addition_MultipleBond
+Created new species: C5H10JJ(37)
+Created new reaction: C4H7J(24) + CH3J(2) --> C5H10JJ(37)
+Created new species: C5H10JJ(38)
+Created new reaction: C4H7J(24) + CH3J(2) --> C5H10JJ(38)
+Created new species: C6H12JJ(39)
+Created new reaction: C4H7J(24) + C2H5J(3) --> C6H12JJ(39)
+Created new species: C6H12JJ(40)
+Created new reaction: C4H7J(24) + C2H5J(3) --> C6H12JJ(40)
+Created new species: C4H8JJ(41)
+Created new reaction: C4H7J(24) + HJ(4) --> C4H8JJ(41)
+Created new species: C4H8JJ(42)
+Created new reaction: C4H7J(24) + HJ(4) --> C4H8JJ(42)
+Created new species: C6H11J(43)
+Created new reaction: C2H4(7) + C4H7J(24) --> C6H11J(43)
+Created new species: C7H14JJ(44)
+Created new reaction: C4H7J(24) + C3H7J(12) --> C7H14JJ(44)
+Created new species: C7H14JJ(45)
+Created new reaction: C4H7J(24) + C3H7J(12) --> C7H14JJ(45)
+Created new species: C6H10JJ(46)
+Created new reaction: C4H7J(24) + C2H3J(11) --> C6H10JJ(46)
+Created new species: C6H10JJ(47)
+Created new reaction: C4H7J(24) + C2H3J(11) --> C6H10JJ(47)
+Created new species: C6H9J(48)
+Created new reaction: C2H2(25) + C4H7J(24) --> C6H9J(48)
+Created new species: C8H14JJ(49)
+Created new reaction: C4H7J(24) + C4H7J(24) --> C8H14JJ(49)
+Created new species: C8H14JJ(50)
+Created new reaction: C4H7J(24) + C4H7J(24) --> C8H14JJ(50)
+Reacting C4H7J(24) with the core: Beta_Scission
+Created new reaction: C4H7J(24) --> C4H6(28) + HJ(4)
+Reacting C4H7J(24) with the core: R_Recombination
+Created new reaction: C4H7J(24) + CH3J(2) --> C5H10(27)
+Created new species: C6H12(51)
+Created new reaction: C4H7J(24) + C2H5J(3) --> C6H12(51)
+Created new reaction: C4H7J(24) + HJ(4) --> C4H8(26)
+Created new species: C7H14(52)
+Created new reaction: C4H7J(24) + C3H7J(12) --> C7H14(52)
+Created new species: C6H10(53)
+Created new reaction: C4H7J(24) + C2H3J(11) --> C6H10(53)
+Created new species: C8H14(54)
+Created new reaction: C4H7J(24) + C4H7J(24) --> C8H14(54)
+Reacting C4H7J(24) with the core: Bond_Dissociation
+Created new reaction: C4H7J(24) --> C4H6JJ(34) + HJ(4)
+Created new reaction: C4H7J(24) --> C2H4JJ(6) + C2H3J(11)
+Created new reaction: C4H7J(24) --> C4H6JJ(35) + HJ(4)
+Created new reaction: C4H7J(24) --> C4H6JJ(36) + HJ(4)
+Reacting C4H7J(24) with the core: Disproportionation
+Created new reaction: CH3J(2) + C4H7J(24) --> CH4(5) + C4H6(28)
+Created new reaction: C4H7J(24) + C2H5J(3) --> C4H8(26) + C2H4(7)
+Created new reaction: C2H5J(3) + C4H7J(24) --> C2H6(1) + C4H6(28)
+Created new reaction: HJ(4) + C4H7J(24) --> H2(10) + C4H6(28)
+Created new reaction: C4H7J(24) + C3H7J(12) --> C4H8(26) + C3H6(19)
+Created new reaction: C3H7J(12) + C4H7J(24) --> C3H8(8) + C4H6(28)
+Created new reaction: C2H3J(11) + C4H7J(24) --> C2H4(7) + C4H6(28)
+Created new reaction: C4H7J(24) + C4H7J(24) --> C4H8(26) + C4H6(28)
+Reacting C4H7J(24) with the core: Molecular_Addition
+Created new reaction: C4H7J(24) + C2H6(1) --> C4H8JJ(41) + C2H5J(3)
+Created new reaction: C4H7J(24) + C2H6(1) --> C4H8JJ(42) + C2H5J(3)
+Created new reaction: C4H7J(24) + CH3J(2) --> C4H8JJ(41) + CH2JJ(14)
+Created new reaction: C4H7J(24) + CH3J(2) --> C4H8JJ(42) + CH2JJ(14)
+Created new reaction: C4H7J(24) + C2H5J(3) --> C4H8JJ(41) + C2H4JJ(6)
+Created new reaction: C4H7J(24) + C2H5J(3) --> C4H8JJ(42) + C2H4JJ(6)
+Created new reaction: C4H7J(24) + CH4(5) --> C4H8JJ(41) + CH3J(2)
+Created new reaction: C4H7J(24) + CH4(5) --> C4H8JJ(42) + CH3J(2)
+Created new reaction: C4H7J(24) + C2H4(7) --> C4H8JJ(41) + C2H3J(11)
+Created new reaction: C4H7J(24) + C2H4(7) --> C4H8JJ(42) + C2H3J(11)
+Created new reaction: C2H4(7) + C4H7J(24) --> C2H5J(3) + C4H6JJ(34)
+Created new reaction: C2H4(7) + C4H7J(24) --> C2H5J(3) + C4H6JJ(35)
+Created new reaction: C2H4(7) + C4H7J(24) --> C2H5J(3) + C4H6JJ(36)
+Created new reaction: C4H7J(24) + H2(10) --> C4H8JJ(41) + HJ(4)
+Created new reaction: C4H7J(24) + H2(10) --> C4H8JJ(42) + HJ(4)
+Created new reaction: C4H7J(24) + C3H7J(12) --> C4H8JJ(41) + C3H6JJ(16)
+Created new reaction: C4H7J(24) + C3H7J(12) --> C4H8JJ(41) + C3H6JJ(17)
+Created new reaction: C4H7J(24) + C3H7J(12) --> C4H8JJ(42) + C3H6JJ(16)
+Created new reaction: C4H7J(24) + C3H7J(12) --> C4H8JJ(42) + C3H6JJ(17)
+Created new reaction: C4H7J(24) + C2H3J(11) --> C4H8JJ(41) + C2H2JJ(23)
+Created new reaction: C4H7J(24) + C2H3J(11) --> C4H8JJ(42) + C2H2JJ(23)
+Created new reaction: C4H7J(24) + C2H2(25) --> C4H8JJ(41) + C2HJ(29)
+Created new reaction: C4H7J(24) + C2H2(25) --> C4H8JJ(42) + C2HJ(29)
+Created new reaction: C4H7J(24) + C4H7J(24) --> C4H8JJ(41) + C4H6JJ(34)
+Created new reaction: C4H7J(24) + C4H7J(24) --> C4H8JJ(41) + C4H6JJ(35)
+Created new reaction: C4H7J(24) + C4H7J(24) --> C4H8JJ(41) + C4H6JJ(36)
+Created new reaction: C4H7J(24) + C4H7J(24) --> C4H8JJ(42) + C4H6JJ(34)
+Created new reaction: C4H7J(24) + C4H7J(24) --> C4H8JJ(42) + C4H6JJ(35)
+Created new reaction: C4H7J(24) + C4H7J(24) --> C4H8JJ(42) + C4H6JJ(36)
+Reacting C4H7J(24) with the core: 1,2_Insertion
+Reacting C4H7J(24) with the core: 1,1_Elimination
+Reacting C4H7J(24) with the core: 1,3_Insertion_CO2
+Reacting C4H7J(24) with the core: 1,2_Elimination_CO2
+Reacting C4H7J(24) with the core: 1,3_Insertion_ROR
+Reacting C4H7J(24) with the core: 1,2_Elimination_ROR
+Reacting C4H7J(24) with the core: 1+2_Cycloaddition
+Reacting C4H7J(24) with the core: Three_Ring_Cleavage
+Reacting C4H7J(24) with the core: 2+2_cycloaddition_Cd
+Created new species: C6H11J(55)
+Created new reaction: C4H7J(24) + C2H4(7) --> C6H11J(55)
+Created new species: C8H14JJ(56)
+Created new reaction: C4H7J(24) + C4H7J(24) --> C8H14JJ(56)
+Created new species: C8H14JJ(57)
+Created new reaction: C4H7J(24) + C4H7J(24) --> C8H14JJ(57)
+Reacting C4H7J(24) with the core: Four_Ring_Cleavage_Cd
+Reacting C4H7J(24) with the core: 2+2_cycloaddition_CO
+Reacting C4H7J(24) with the core: Four_Ring_Cleavage_CO
+Reacting C4H7J(24) with the core: 2+2_cycloaddition_CCO
+Reacting C4H7J(24) with the core: Four_Ring_Cleavage_CCO
+Reacting C4H7J(24) with the core: Diels_alder_addition
+Reacting C4H7J(24) with the core: Retro_Diels_Alder_Addition
+Reacting C4H7J(24) with the core: intra_H_migration
+Created new species: C4H7J(58)
+Created new reaction: C4H7J(24) --> C4H7J(58)
+Created new reaction: C4H7J(58) --> C4H7J(24)
+Created new species: C4H7J(59)
+Created new reaction: C4H7J(24) --> C4H7J(59)
+Created new reaction: C4H7J(24) --> C4H7J(31)
+Created new reaction: C4H7J(31) --> C4H7J(24)
+Reacting C4H7J(24) with the core: HO2_Elimination_from_PeroxyRadical
+Reacting C4H7J(24) with the core: Birad_recombination
+Reacting C4H7J(24) with the core: Ring_Open
+Reacting C4H7J(24) with the core: Oa_R_Recombination
+Reacting C4H7J(24) with the core: RO_Bond_Dissociation
+Reacting C4H7J(24) with the core: R_Addition_COm
+Reacting C4H7J(24) with the core: COM_Elimination_From_Carbonyl
+Reacting C4H7J(24) with the core: Intra_R_Add_Exocyclic
+Created new species: C4H7J(60)
+Created new reaction: C4H7J(24) --> C4H7J(60)
+Reacting C4H7J(24) with the core: Ring_Open_Exo_Cycli_Radical
+Reacting C4H7J(24) with the core: Intra_R_Add_Endocyclic
+Created new species: C4H7J(61)
+Created new reaction: C4H7J(24) --> C4H7J(61)
+Reacting C4H7J(24) with the core: Ring_Open_Endo_Cycli_Radical
+Reacting C4H7J(24) with the core: 1,2-Birad_to_alkene
+Reacting C4H7J(24) with the core: Alkene_to_1,2-birad
+Created new species: C4H7JJJ(62)
+Created new reaction: C4H7J(24) --> C4H7JJJ(62)
+Memory used: 85000192
+Free memory: 37967280
+Solving reaction system...
+DEBUG: DASSL Fortran code found that edge entity 48 exceeded the model enlargement criterion.
+ODE solver integrated to 2.459157860705274E-4 sec.
+After ODE: from 0.0 SEC to 2.459157860705274E-4SEC
+Sp.#	Name         	Concentration 	Flux
+   1	C2H6         	 9.380382E-07 	-4.317117E-03
+   2	CH3J         	 2.931633E-10 	-5.856578E-07
+   3	C2H5J        	 2.155637E-09 	-5.557255E-06
+   5	CH4          	 2.272167E-07 	 3.025432E-04
+   4	HJ           	 5.997508E-10 	-1.392752E-06
+   7	C2H4         	 3.100714E-06 	-2.782658E-04
+  10	H2           	 4.168312E-06 	 2.723041E-03
+  12	C3H7J        	 2.135022E-13 	-4.456787E-10
+  11	C2H3J        	 2.706206E-10 	 1.550279E-08
+  25	C2H2         	 5.900034E-07 	 1.577319E-03
+  24	C4H7J        	 6.220312E-12 	-2.017890E-10
+For reaction system: 1 out of 1
+At this time: 2.459157860705274E-4SEC
+Conversion of C2H6 is:0.8960923078777658
+Running Time is: 0.27749999999999997 minutes.
+The model core has 19 reactions and 11 species.
+The model edge has 83 reactions and 51 species.
+After garbage collection:
+Memory used: 85000192
+Free memory: 52234784
+Exceeded largest permitted flux for convergence (tolerance=0.1): 5.358113962259968E-4
+PDep Pruning DEBUG:
+The number of species in the model's edge, after pruning: 51
+
+Enlarging reaction model
+Time: 2.459157860705274E-4SEC
+Unreacted species C4H7J has highest flux: 5.41773629862246E-4
+The total number of unreacted reactions with this species is 1. Significant ones are:
+ C4H7J(24)=C4H7J(59)	5.41773629862246E-4
+
+Add a new reacted Species:C4H7J
+Thermo of species at 298K (H, S, G, Cp, respectively)	32.873756753004955	70.62282139258981	11.828155978013195	20.630800000000008
+Generating reactions using reaction family templates.
+Reacting C4H7J(59) with the core: Cyclic_Ether_Formation
+Reacting C4H7J(59) with the core: OH+CyclicEther_Form_Alkyl-hydroperoxyl
+Reacting C4H7J(59) with the core: intra_OH_migration
+Reacting C4H7J(59) with the core: H_Abstraction
+Created new reaction: C2H6(1) + C4H7J(59) --> C2H5J(3) + C4H8(26)
+Ea computed using Evans-Polanyi dHrxn(298K)=-16.6 kcal/mol and alpha=0.65.
+Created new reaction: C4H7J(59) + CH3J(2) --> C4H6JJ(34) + CH4(5)
+Ea computed using Evans-Polanyi dHrxn(298K)=-16.6 kcal/mol and alpha=0.65.
+Ea computed using Evans-Polanyi dHrxn(298K)=-16.6 kcal/mol and alpha=0.65.
+Created new species: C4H6JJ(63)
+Created new reaction: C4H7J(59) + CH3J(2) --> C4H6JJ(63) + CH4(5)
+Created new species: C4H6JJ(64)
+Created new reaction: C4H7J(59) + CH3J(2) --> C4H6JJ(64) + CH4(5)
+Ea computed using Evans-Polanyi dHrxn(298K)=-12.9 kcal/mol and alpha=0.01.
+Created new reaction: C4H7J(59) + C2H5J(3) --> C4H6JJ(34) + C2H6(1)
+Ea computed using Evans-Polanyi dHrxn(298K)=-12.9 kcal/mol and alpha=0.01.
+Ea computed using Evans-Polanyi dHrxn(298K)=-12.9 kcal/mol and alpha=0.01.
+Created new reaction: C4H7J(59) + C2H5J(3) --> C4H6JJ(63) + C2H6(1)
+Created new reaction: C4H7J(59) + C2H5J(3) --> C4H6JJ(64) + C2H6(1)
+Created new reaction: C2H5J(3) + C4H7J(59) --> C2H4JJ(6) + C4H8(26)
+Created new reaction: CH4(5) + C4H7J(59) --> CH3J(2) + C4H8(26)
+Ea computed using Evans-Polanyi dHrxn(298K)=-16.0 kcal/mol and alpha=0.65.
+Ea raised from -1.0 kcal/mol to 0.0.
+Created new reaction: C4H7J(59) + HJ(4) --> C4H6JJ(34) + H2(10)
+Ea computed using Evans-Polanyi dHrxn(298K)=-16.0 kcal/mol and alpha=0.65.
+Ea raised from -1.0 kcal/mol to 0.0.
+Ea computed using Evans-Polanyi dHrxn(298K)=-16.0 kcal/mol and alpha=0.65.
+Ea raised from -1.0 kcal/mol to 0.0.
+Created new reaction: C4H7J(59) + HJ(4) --> C4H6JJ(63) + H2(10)
+Created new reaction: C4H7J(59) + HJ(4) --> C4H6JJ(64) + H2(10)
+Created new reaction: C2H4(7) + C4H7J(59) --> C2H3J(11) + C4H8(26)
+Created new reaction: H2(10) + C4H7J(59) --> HJ(4) + C4H8(26)
+Ea computed using Evans-Polanyi dHrxn(298K)=-12.9 kcal/mol and alpha=0.01.
+Created new reaction: C4H7J(59) + C3H7J(12) --> C4H6JJ(34) + C3H8(8)
+Ea computed using Evans-Polanyi dHrxn(298K)=-12.9 kcal/mol and alpha=0.01.
+Ea computed using Evans-Polanyi dHrxn(298K)=-12.9 kcal/mol and alpha=0.01.
+Created new reaction: C4H7J(59) + C3H7J(12) --> C4H6JJ(63) + C3H8(8)
+Created new reaction: C4H7J(59) + C3H7J(12) --> C4H6JJ(64) + C3H8(8)
+Created new reaction: C3H7J(12) + C4H7J(59) --> C3H6JJ(16) + C4H8(26)
+Created new reaction: C3H7J(12) + C4H7J(59) --> C3H6JJ(17) + C4H8(26)
+Ea computed using Evans-Polanyi dHrxn(298K)=-23.0 kcal/mol and alpha=0.01.
+Created new reaction: C4H7J(59) + C2H3J(11) --> C4H6JJ(34) + C2H4(7)
+Ea computed using Evans-Polanyi dHrxn(298K)=-23.0 kcal/mol and alpha=0.01.
+Ea computed using Evans-Polanyi dHrxn(298K)=-23.0 kcal/mol and alpha=0.01.
+Ea computed using Evans-Polanyi dHrxn(298K)=-2.2 kcal/mol and alpha=0.01.
+Created new reaction: C4H7J(59) + C2H3J(11) --> C4H6JJ(63) + C2H4(7)
+Created new reaction: C4H7J(59) + C2H3J(11) --> C4H6JJ(64) + C2H4(7)
+Created new reaction: C2H3J(11) + C4H7J(59) --> C2H2JJ(23) + C4H8(26)
+Created new reaction: C2H2(25) + C4H7J(59) --> C2HJ(29) + C4H8(26)
+Ea computed using Evans-Polanyi dHrxn(298K)=-12.9 kcal/mol and alpha=0.01.
+Created new reaction: C4H7J(59) + C4H7J(24) --> C4H6JJ(34) + C4H8(26)
+Ea computed using Evans-Polanyi dHrxn(298K)=-12.9 kcal/mol and alpha=0.01.
+Ea computed using Evans-Polanyi dHrxn(298K)=-12.9 kcal/mol and alpha=0.01.
+Created new reaction: C4H7J(59) + C4H7J(24) --> C4H6JJ(63) + C4H8(26)
+Created new reaction: C4H7J(59) + C4H7J(24) --> C4H6JJ(64) + C4H8(26)
+Ea computed using Evans-Polanyi dHrxn(298K)=-12.9 kcal/mol and alpha=0.01.
+Ea computed using Evans-Polanyi dHrxn(298K)=-12.9 kcal/mol and alpha=0.01.
+Created new reaction: C4H7J(24) + C4H7J(59) --> C4H6JJ(35) + C4H8(26)
+Created new reaction: C4H7J(24) + C4H7J(59) --> C4H6JJ(36) + C4H8(26)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C4H6JJ(34) + C4H8(26)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C4H6JJ(63) + C4H8(26)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C4H6JJ(64) + C4H8(26)
+Created new species: C4H8(65)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C4H6JJ(34) + C4H8(65)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C4H6JJ(63) + C4H8(65)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C4H6JJ(64) + C4H8(65)
+Created new species: C4H6JJ(66)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C4H6JJ(66) + C4H8(26)
+Created new reaction: C2H6(1) + C4H7J(59) --> C2H5J(3) + C4H8(65)
+Created new reaction: C4H7J(59) + CH3J(2) --> C4H6JJ(66) + CH4(5)
+Created new reaction: C4H7J(59) + C2H5J(3) --> C4H6JJ(66) + C2H6(1)
+Created new reaction: C2H5J(3) + C4H7J(59) --> C2H4JJ(6) + C4H8(65)
+Created new reaction: CH4(5) + C4H7J(59) --> CH3J(2) + C4H8(65)
+Created new reaction: C4H7J(59) + HJ(4) --> C4H6JJ(66) + H2(10)
+Created new reaction: C2H4(7) + C4H7J(59) --> C2H3J(11) + C4H8(65)
+Created new reaction: H2(10) + C4H7J(59) --> HJ(4) + C4H8(65)
+Created new reaction: C4H7J(59) + C3H7J(12) --> C4H6JJ(66) + C3H8(8)
+Created new reaction: C3H7J(12) + C4H7J(59) --> C3H6JJ(16) + C4H8(65)
+Created new reaction: C3H7J(12) + C4H7J(59) --> C3H6JJ(17) + C4H8(65)
+Created new reaction: C4H7J(59) + C2H3J(11) --> C4H6JJ(66) + C2H4(7)
+Ea computed using Evans-Polanyi dHrxn(298K)=-2.2 kcal/mol and alpha=0.01.
+Created new reaction: C2H3J(11) + C4H7J(59) --> C2H2JJ(23) + C4H8(65)
+Created new reaction: C2H2(25) + C4H7J(59) --> C2HJ(29) + C4H8(65)
+Created new reaction: C4H7J(59) + C4H7J(24) --> C4H6JJ(66) + C4H8(26)
+Ea computed using Evans-Polanyi dHrxn(298K)=-16.0 kcal/mol and alpha=0.01.
+Created new reaction: C4H7J(24) + C4H7J(59) --> C4H6JJ(34) + C4H8(65)
+Ea computed using Evans-Polanyi dHrxn(298K)=-16.0 kcal/mol and alpha=0.01.
+Created new reaction: C4H7J(24) + C4H7J(59) --> C4H6JJ(35) + C4H8(65)
+Created new reaction: C4H7J(24) + C4H7J(59) --> C4H6JJ(36) + C4H8(65)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C4H6JJ(66) + C4H8(65)
+Reacting C4H7J(59) with the core: R_Addition_MultipleBond
+Created new species: C5H10JJ(67)
+Created new reaction: C4H7J(59) + CH3J(2) --> C5H10JJ(67)
+Created new species: C5H10JJ(68)
+Created new reaction: C4H7J(59) + CH3J(2) --> C5H10JJ(68)
+Created new species: C6H12JJ(69)
+Created new reaction: C4H7J(59) + C2H5J(3) --> C6H12JJ(69)
+Created new species: C6H12JJ(70)
+Created new reaction: C4H7J(59) + C2H5J(3) --> C6H12JJ(70)
+Created new reaction: C4H7J(59) + HJ(4) --> C4H8JJ(42)
+Created new species: C4H8JJ(71)
+Created new reaction: C4H7J(59) + HJ(4) --> C4H8JJ(71)
+Created new species: C6H11J(72)
+Created new reaction: C2H4(7) + C4H7J(59) --> C6H11J(72)
+Created new species: C7H14JJ(73)
+Created new reaction: C4H7J(59) + C3H7J(12) --> C7H14JJ(73)
+Created new species: C7H14JJ(74)
+Created new reaction: C4H7J(59) + C3H7J(12) --> C7H14JJ(74)
+Created new species: C6H10JJ(75)
+Created new reaction: C4H7J(59) + C2H3J(11) --> C6H10JJ(75)
+Created new species: C6H10JJ(76)
+Created new reaction: C4H7J(59) + C2H3J(11) --> C6H10JJ(76)
+Created new species: C6H9J(77)
+Created new reaction: C2H2(25) + C4H7J(59) --> C6H9J(77)
+Created new species: C8H14JJ(78)
+Created new reaction: C4H7J(59) + C4H7J(24) --> C8H14JJ(78)
+Created new species: C8H14JJ(79)
+Created new reaction: C4H7J(59) + C4H7J(24) --> C8H14JJ(79)
+Created new species: C8H14JJ(80)
+Created new reaction: C4H7J(24) + C4H7J(59) --> C8H14JJ(80)
+Created new species: C8H14JJ(81)
+Created new reaction: C4H7J(24) + C4H7J(59) --> C8H14JJ(81)
+Created new species: C8H14JJ(82)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C8H14JJ(82)
+Created new species: C8H14JJ(83)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C8H14JJ(83)
+Created new species: C8H14JJ(84)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C8H14JJ(84)
+Created new species: C8H14JJ(85)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C8H14JJ(85)
+Created new species: C8H14JJ(86)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C8H14JJ(86)
+Created new species: C5H10JJ(87)
+Created new reaction: C4H7J(59) + CH3J(2) --> C5H10JJ(87)
+Created new species: C6H12JJ(88)
+Created new reaction: C4H7J(59) + C2H5J(3) --> C6H12JJ(88)
+Created new species: C4H8JJ(89)
+Created new reaction: C4H7J(59) + HJ(4) --> C4H8JJ(89)
+Created new species: C6H11J(90)
+Created new reaction: C2H4(7) + C4H7J(59) --> C6H11J(90)
+Created new species: C7H14JJ(91)
+Created new reaction: C4H7J(59) + C3H7J(12) --> C7H14JJ(91)
+Created new species: C6H10JJ(92)
+Created new reaction: C4H7J(59) + C2H3J(11) --> C6H10JJ(92)
+Created new species: C6H9J(93)
+Created new reaction: C2H2(25) + C4H7J(59) --> C6H9J(93)
+Created new species: C8H14JJ(94)
+Created new reaction: C4H7J(59) + C4H7J(24) --> C8H14JJ(94)
+Created new species: C8H14JJ(95)
+Created new reaction: C4H7J(24) + C4H7J(59) --> C8H14JJ(95)
+Created new species: C8H14JJ(96)
+Created new reaction: C4H7J(24) + C4H7J(59) --> C8H14JJ(96)
+Created new species: C8H14JJ(97)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C8H14JJ(97)
+Reacting C4H7J(59) with the core: Beta_Scission
+Created new reaction: C4H7J(59) --> C4H6(28) + HJ(4)
+Created new species: C4H6(98)
+Created new reaction: C4H7J(59) --> C4H6(98) + HJ(4)
+Reacting C4H7J(59) with the core: R_Recombination
+Created new species: C5H10(99)
+Created new reaction: C4H7J(59) + CH3J(2) --> C5H10(99)
+Created new species: C6H12(100)
+Created new reaction: C4H7J(59) + C2H5J(3) --> C6H12(100)
+Created new reaction: C4H7J(59) + HJ(4) --> C4H8(26)
+Created new species: C7H14(101)
+Created new reaction: C4H7J(59) + C3H7J(12) --> C7H14(101)
+Created new species: C6H10(102)
+Created new reaction: C4H7J(59) + C2H3J(11) --> C6H10(102)
+Created new species: C8H14(103)
+Created new reaction: C4H7J(59) + C4H7J(24) --> C8H14(103)
+Created new species: C8H14(104)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C8H14(104)
+Created new species: C8H14(105)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C8H14(105)
+Created new species: C5H10(106)
+Created new reaction: C4H7J(59) + CH3J(2) --> C5H10(106)
+Created new species: C6H12(107)
+Created new reaction: C4H7J(59) + C2H5J(3) --> C6H12(107)
+Created new reaction: C4H7J(59) + HJ(4) --> C4H8(65)
+Created new species: C7H14(108)
+Created new reaction: C4H7J(59) + C3H7J(12) --> C7H14(108)
+Created new species: C6H10(109)
+Created new reaction: C4H7J(59) + C2H3J(11) --> C6H10(109)
+Created new species: C8H14(110)
+Created new reaction: C4H7J(59) + C4H7J(24) --> C8H14(110)
+Created new species: C8H14(111)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C8H14(111)
+Reacting C4H7J(59) with the core: Bond_Dissociation
+Created new reaction: C4H7J(59) --> C4H6JJ(34) + HJ(4)
+Created new reaction: C4H7J(59) --> C4H6JJ(63) + HJ(4)
+Created new reaction: C4H7J(59) --> C4H6JJ(64) + HJ(4)
+Created new species: C3H4JJ(112)
+Created new reaction: C4H7J(59) --> C3H4JJ(112) + CH3J(2)
+Created new reaction: C4H7J(59) --> C4H6JJ(66) + HJ(4)
+Reacting C4H7J(59) with the core: Disproportionation
+Created new reaction: CH3J(2) + C4H7J(59) --> CH4(5) + C4H6(28)
+Created new reaction: CH3J(2) + C4H7J(59) --> CH4(5) + C4H6(98)
+Created new reaction: C4H7J(59) + C2H5J(3) --> C4H8(26) + C2H4(7)
+Created new reaction: C2H5J(3) + C4H7J(59) --> C2H6(1) + C4H6(28)
+Created new reaction: C2H5J(3) + C4H7J(59) --> C2H6(1) + C4H6(98)
+Created new reaction: HJ(4) + C4H7J(59) --> H2(10) + C4H6(28)
+Created new reaction: HJ(4) + C4H7J(59) --> H2(10) + C4H6(98)
+Created new reaction: C4H7J(59) + C3H7J(12) --> C4H8(26) + C3H6(19)
+Created new reaction: C3H7J(12) + C4H7J(59) --> C3H8(8) + C4H6(28)
+Created new reaction: C3H7J(12) + C4H7J(59) --> C3H8(8) + C4H6(98)
+Created new reaction: C2H3J(11) + C4H7J(59) --> C2H4(7) + C4H6(28)
+Created new reaction: C2H3J(11) + C4H7J(59) --> C2H4(7) + C4H6(98)
+Created new reaction: C4H7J(59) + C4H7J(24) --> C4H8(26) + C4H6(28)
+Created new reaction: C4H7J(24) + C4H7J(59) --> C4H8(26) + C4H6(98)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C4H8(26) + C4H6(28)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C4H8(26) + C4H6(98)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C4H8(65) + C4H6(28)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C4H8(65) + C4H6(98)
+Created new reaction: C4H7J(59) + C2H5J(3) --> C4H8(65) + C2H4(7)
+Created new reaction: C4H7J(59) + C3H7J(12) --> C4H8(65) + C3H6(19)
+Created new reaction: C4H7J(59) + C4H7J(24) --> C4H8(65) + C4H6(28)
+Reacting C4H7J(59) with the core: Molecular_Addition
+Created new reaction: C4H7J(59) + C2H6(1) --> C4H8JJ(42) + C2H5J(3)
+Created new reaction: C4H7J(59) + C2H6(1) --> C4H8JJ(71) + C2H5J(3)
+Created new reaction: C4H7J(59) + CH3J(2) --> C4H8JJ(42) + CH2JJ(14)
+Created new reaction: C4H7J(59) + CH3J(2) --> C4H8JJ(71) + CH2JJ(14)
+Created new reaction: C4H7J(59) + C2H5J(3) --> C4H8JJ(42) + C2H4JJ(6)
+Created new reaction: C4H7J(59) + C2H5J(3) --> C4H8JJ(71) + C2H4JJ(6)
+Created new reaction: C4H7J(59) + CH4(5) --> C4H8JJ(42) + CH3J(2)
+Created new reaction: C4H7J(59) + CH4(5) --> C4H8JJ(71) + CH3J(2)
+Created new reaction: C4H7J(59) + C2H4(7) --> C4H8JJ(42) + C2H3J(11)
+Created new reaction: C4H7J(59) + C2H4(7) --> C4H8JJ(71) + C2H3J(11)
+Created new reaction: C2H4(7) + C4H7J(59) --> C2H5J(3) + C4H6JJ(63)
+Created new reaction: C2H4(7) + C4H7J(59) --> C2H5J(3) + C4H6JJ(34)
+Created new reaction: C2H4(7) + C4H7J(59) --> C2H5J(3) + C4H6JJ(64)
+Created new reaction: C4H7J(59) + H2(10) --> C4H8JJ(42) + HJ(4)
+Created new reaction: C4H7J(59) + H2(10) --> C4H8JJ(71) + HJ(4)
+Created new reaction: C4H7J(59) + C3H7J(12) --> C4H8JJ(42) + C3H6JJ(16)
+Created new reaction: C4H7J(59) + C3H7J(12) --> C4H8JJ(42) + C3H6JJ(17)
+Created new reaction: C4H7J(59) + C3H7J(12) --> C4H8JJ(71) + C3H6JJ(16)
+Created new reaction: C4H7J(59) + C3H7J(12) --> C4H8JJ(71) + C3H6JJ(17)
+Created new reaction: C4H7J(59) + C2H3J(11) --> C4H8JJ(42) + C2H2JJ(23)
+Created new reaction: C4H7J(59) + C2H3J(11) --> C4H8JJ(71) + C2H2JJ(23)
+Created new reaction: C4H7J(59) + C2H2(25) --> C4H8JJ(42) + C2HJ(29)
+Created new reaction: C4H7J(59) + C2H2(25) --> C4H8JJ(71) + C2HJ(29)
+Created new reaction: C4H7J(59) + C4H7J(24) --> C4H8JJ(42) + C4H6JJ(34)
+Created new reaction: C4H7J(59) + C4H7J(24) --> C4H8JJ(42) + C4H6JJ(35)
+Created new reaction: C4H7J(59) + C4H7J(24) --> C4H8JJ(42) + C4H6JJ(36)
+Created new reaction: C4H7J(59) + C4H7J(24) --> C4H8JJ(71) + C4H6JJ(34)
+Created new reaction: C4H7J(59) + C4H7J(24) --> C4H8JJ(71) + C4H6JJ(35)
+Created new reaction: C4H7J(59) + C4H7J(24) --> C4H8JJ(71) + C4H6JJ(36)
+Created new reaction: C4H7J(24) + C4H7J(59) --> C4H8JJ(41) + C4H6JJ(63)
+Created new reaction: C4H7J(24) + C4H7J(59) --> C4H8JJ(41) + C4H6JJ(34)
+Created new reaction: C4H7J(24) + C4H7J(59) --> C4H8JJ(41) + C4H6JJ(64)
+Created new reaction: C4H7J(24) + C4H7J(59) --> C4H8JJ(42) + C4H6JJ(63)
+Created new reaction: C4H7J(24) + C4H7J(59) --> C4H8JJ(42) + C4H6JJ(64)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C4H8JJ(42) + C4H6JJ(63)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C4H8JJ(42) + C4H6JJ(34)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C4H8JJ(42) + C4H6JJ(64)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C4H8JJ(71) + C4H6JJ(63)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C4H8JJ(71) + C4H6JJ(34)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C4H8JJ(71) + C4H6JJ(64)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C4H8JJ(42) + C4H6JJ(66)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C4H8JJ(71) + C4H6JJ(66)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C4H8JJ(89) + C4H6JJ(63)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C4H8JJ(89) + C4H6JJ(34)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C4H8JJ(89) + C4H6JJ(64)
+Created new reaction: C4H7J(59) + C2H6(1) --> C4H8JJ(89) + C2H5J(3)
+Created new reaction: C4H7J(59) + CH3J(2) --> C4H8JJ(89) + CH2JJ(14)
+Created new reaction: C4H7J(59) + C2H5J(3) --> C4H8JJ(89) + C2H4JJ(6)
+Created new reaction: C4H7J(59) + CH4(5) --> C4H8JJ(89) + CH3J(2)
+Created new reaction: C4H7J(59) + C2H4(7) --> C4H8JJ(89) + C2H3J(11)
+Created new reaction: C2H4(7) + C4H7J(59) --> C2H5J(3) + C4H6JJ(66)
+Created new reaction: C4H7J(59) + H2(10) --> C4H8JJ(89) + HJ(4)
+Created new reaction: C4H7J(59) + C3H7J(12) --> C4H8JJ(89) + C3H6JJ(16)
+Created new reaction: C4H7J(59) + C3H7J(12) --> C4H8JJ(89) + C3H6JJ(17)
+Created new reaction: C4H7J(59) + C2H3J(11) --> C4H8JJ(89) + C2H2JJ(23)
+Created new reaction: C4H7J(59) + C2H2(25) --> C4H8JJ(89) + C2HJ(29)
+Created new reaction: C4H7J(59) + C4H7J(24) --> C4H8JJ(89) + C4H6JJ(34)
+Created new reaction: C4H7J(59) + C4H7J(24) --> C4H8JJ(89) + C4H6JJ(35)
+Created new reaction: C4H7J(59) + C4H7J(24) --> C4H8JJ(89) + C4H6JJ(36)
+Created new reaction: C4H7J(24) + C4H7J(59) --> C4H8JJ(41) + C4H6JJ(66)
+Created new reaction: C4H7J(24) + C4H7J(59) --> C4H8JJ(42) + C4H6JJ(66)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C4H8JJ(89) + C4H6JJ(66)
+Reacting C4H7J(59) with the core: 1,2_Insertion
+Reacting C4H7J(59) with the core: 1,1_Elimination
+Reacting C4H7J(59) with the core: 1,3_Insertion_CO2
+Reacting C4H7J(59) with the core: 1,2_Elimination_CO2
+Reacting C4H7J(59) with the core: 1,3_Insertion_ROR
+Reacting C4H7J(59) with the core: 1,2_Elimination_ROR
+Reacting C4H7J(59) with the core: 1+2_Cycloaddition
+Reacting C4H7J(59) with the core: Three_Ring_Cleavage
+Reacting C4H7J(59) with the core: 2+2_cycloaddition_Cd
+Created new species: C6H11J(113)
+Created new reaction: C4H7J(59) + C2H4(7) --> C6H11J(113)
+Created new species: C8H14JJ(114)
+Created new reaction: C4H7J(59) + C4H7J(24) --> C8H14JJ(114)
+Created new species: C8H14JJ(115)
+Created new reaction: C4H7J(59) + C4H7J(24) --> C8H14JJ(115)
+Created new species: C8H14JJ(116)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C8H14JJ(116)
+Created new species: C8H14JJ(117)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C8H14JJ(117)
+Created new species: C8H14JJ(118)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C8H14JJ(118)
+Created new species: C8H14JJ(119)
+Created new reaction: C4H7J(59) + C4H7J(59) --> C8H14JJ(119)
+Created new species: C6H11J(120)
+Created new reaction: C2H4(7) + C4H7J(59) --> C6H11J(120)
+Created new species: C8H14JJ(121)
+Created new reaction: C4H7J(24) + C4H7J(59) --> C8H14JJ(121)
+Created new species: C8H14JJ(122)
+Created new reaction: C4H7J(24) + C4H7J(59) --> C8H14JJ(122)
+Reacting C4H7J(59) with the core: Four_Ring_Cleavage_Cd
+Reacting C4H7J(59) with the core: 2+2_cycloaddition_CO
+Reacting C4H7J(59) with the core: Four_Ring_Cleavage_CO
+Reacting C4H7J(59) with the core: 2+2_cycloaddition_CCO
+Reacting C4H7J(59) with the core: Four_Ring_Cleavage_CCO
+Reacting C4H7J(59) with the core: Diels_alder_addition
+Reacting C4H7J(59) with the core: Retro_Diels_Alder_Addition
+Reacting C4H7J(59) with the core: intra_H_migration
+Created new reaction: C4H7J(59) --> C4H7J(31)
+Created new reaction: C4H7J(31) --> C4H7J(59)
+Created new reaction: C4H7J(59) --> C4H7J(58)
+Created new reaction: C4H7J(58) --> C4H7J(59)
+Created new species: C4H7J(123)
+Created new reaction: C4H7J(59) --> C4H7J(123)
+Created new reaction: C4H7J(123) --> C4H7J(59)
+Reacting C4H7J(59) with the core: HO2_Elimination_from_PeroxyRadical
+Reacting C4H7J(59) with the core: Birad_recombination
+Reacting C4H7J(59) with the core: Ring_Open
+Reacting C4H7J(59) with the core: Oa_R_Recombination
+Reacting C4H7J(59) with the core: RO_Bond_Dissociation
+Reacting C4H7J(59) with the core: R_Addition_COm
+Reacting C4H7J(59) with the core: COM_Elimination_From_Carbonyl
+Reacting C4H7J(59) with the core: Intra_R_Add_Exocyclic
+Reacting C4H7J(59) with the core: Ring_Open_Exo_Cycli_Radical
+Reacting C4H7J(59) with the core: Intra_R_Add_Endocyclic
+Created new species: C4H7J(124)
+Created new reaction: C4H7J(59) --> C4H7J(124)
+Reacting C4H7J(59) with the core: Ring_Open_Endo_Cycli_Radical
+Reacting C4H7J(59) with the core: 1,2-Birad_to_alkene
+Reacting C4H7J(59) with the core: Alkene_to_1,2-birad
+Memory used: 85000192
+Free memory: 40596440
+Solving reaction system...
+DEBUG: DASSL Fortran code found that edge entity 17 exceeded the model enlargement criterion.
+ODE solver integrated to 2.243819018897611E-4 sec.
+After ODE: from 0.0 SEC to 2.243819018897611E-4SEC
+Sp.#	Name         	Concentration 	Flux
+   1	C2H6         	 1.039581E-06 	-5.120202E-03
+   2	CH3J         	 3.070383E-10 	-7.016419E-07
+   3	C2H5J        	 2.281967E-09 	-6.186507E-06
+   5	CH4          	 2.203996E-07 	 3.358121E-04
+   4	HJ           	 6.317014E-10 	-1.577966E-06
+   7	C2H4         	 3.104185E-06 	-4.281324E-05
+  10	H2           	 4.105062E-06 	 3.152767E-03
+  12	C3H7J        	 2.238573E-13 	-5.146448E-10
+  11	C2H3J        	 2.698679E-10 	 5.117630E-08
+  25	C2H2         	 5.547683E-07 	 1.682829E-03
+  24	C4H7J        	 6.209826E-12 	 1.094305E-09
+  59	C4H7J        	 1.177813E-10 	 2.115125E-08
+For reaction system: 1 out of 1
+At this time: 2.243819018897611E-4SEC
+Conversion of C2H6 is:0.8848443259835178
+Running Time is: 0.3559 minutes.
+The model core has 20 reactions and 12 species.
+The model edge has 185 reactions and 112 species.
+After garbage collection:
+Memory used: 85000192
+Free memory: 50033528
+Exceeded largest permitted flux for convergence (tolerance=0.1): 6.253236622580071E-4
+PDep Pruning DEBUG:
+The number of species in the model's edge, after pruning: 112
+
+Enlarging reaction model
+Time: 2.243819018897611E-4SEC
+Unreacted species C4H6 has highest flux: 6.313891003219132E-4
+The total number of unreacted reactions with this species is 18. Significant ones are:
+ C4H7J(59)=C4H6(28)+HJ(4)	5.090554776602325E-4
+ C4H7J(24)=C4H6(28)+HJ(4)	1.1429865484878042E-4
+
+Add a new reacted Species:C4H6
+Thermo of species at 298K (H, S, G, Cp, respectively)	26.07463378175232	66.58681593918475	6.231762631875267	19.995600000000003
+Generating reactions using reaction family templates.
+Reacting C4H6(28) with the core: Cyclic_Ether_Formation
+Reacting C4H6(28) with the core: OH+CyclicEther_Form_Alkyl-hydroperoxyl
+Reacting C4H6(28) with the core: intra_OH_migration
+Reacting C4H6(28) with the core: H_Abstraction
+Created new species: C4H5J(125)
+Created new reaction: C4H6(28) + CH3J(2) --> C4H5J(125) + CH4(5)
+Created new reaction: C4H6(28) + CH3J(2) --> C4H5J(33) + CH4(5)
+Created new reaction: C4H6(28) + C2H5J(3) --> C4H5J(125) + C2H6(1)
+Created new reaction: C4H6(28) + C2H5J(3) --> C4H5J(33) + C2H6(1)
+Created new reaction: C4H6(28) + HJ(4) --> C4H5J(125) + H2(10)
+Created new reaction: C4H6(28) + HJ(4) --> C4H5J(33) + H2(10)
+Created new reaction: C4H6(28) + C3H7J(12) --> C4H5J(125) + C3H8(8)
+Created new reaction: C4H6(28) + C3H7J(12) --> C4H5J(33) + C3H8(8)
+Created new reaction: C4H6(28) + C2H3J(11) --> C4H5J(125) + C2H4(7)
+Created new reaction: C4H6(28) + C2H3J(11) --> C4H5J(33) + C2H4(7)
+Created new reaction: C4H6(28) + C4H7J(24) --> C4H5J(125) + C4H8(26)
+Created new reaction: C4H6(28) + C4H7J(24) --> C4H5J(33) + C4H8(26)
+Created new reaction: C4H6(28) + C4H7J(59) --> C4H5J(125) + C4H8(26)
+Created new reaction: C4H6(28) + C4H7J(59) --> C4H5J(33) + C4H8(26)
+Created new reaction: C4H6(28) + C4H7J(59) --> C4H5J(125) + C4H8(65)
+Created new reaction: C4H6(28) + C4H7J(59) --> C4H5J(33) + C4H8(65)
+Reacting C4H6(28) with the core: R_Addition_MultipleBond
+Created new species: C5H9J(126)
+Created new reaction: C4H6(28) + CH3J(2) --> C5H9J(126)
+Created new species: C5H9J(127)
+Created new reaction: C4H6(28) + CH3J(2) --> C5H9J(127)
+Created new species: C6H11J(128)
+Created new reaction: C4H6(28) + C2H5J(3) --> C6H11J(128)
+Created new species: C6H11J(129)
+Created new reaction: C4H6(28) + C2H5J(3) --> C6H11J(129)
+Created new species: C7H13J(130)
+Created new reaction: C4H6(28) + C3H7J(12) --> C7H13J(130)
+Created new species: C7H13J(131)
+Created new reaction: C4H6(28) + C3H7J(12) --> C7H13J(131)
+Created new species: C6H9J(132)
+Created new reaction: C4H6(28) + C2H3J(11) --> C6H9J(132)
+Created new species: C6H9J(133)
+Created new reaction: C4H6(28) + C2H3J(11) --> C6H9J(133)
+Created new species: C8H13J(134)
+Created new reaction: C4H6(28) + C4H7J(24) --> C8H13J(134)
+Created new species: C8H13J(135)
+Created new reaction: C4H6(28) + C4H7J(24) --> C8H13J(135)
+Created new species: C8H13J(136)
+Created new reaction: C4H6(28) + C4H7J(59) --> C8H13J(136)
+Created new species: C8H13J(137)
+Created new reaction: C4H6(28) + C4H7J(59) --> C8H13J(137)
+Created new species: C8H13J(138)
+Created new reaction: C4H6(28) + C4H7J(59) --> C8H13J(138)
+Created new species: C8H13J(139)
+Created new reaction: C4H6(28) + C4H7J(59) --> C8H13J(139)
+Reacting C4H6(28) with the core: Beta_Scission
+Reacting C4H6(28) with the core: R_Recombination
+Reacting C4H6(28) with the core: Bond_Dissociation
+Created new reaction: C4H6(28) --> C4H5J(125) + HJ(4)
+Created new reaction: C4H6(28) --> C4H5J(33) + HJ(4)
+Reacting C4H6(28) with the core: Disproportionation
+Reacting C4H6(28) with the core: Molecular_Addition
+Created new reaction: C4H6(28) + CH3J(2) --> C4H7J(24) + CH2JJ(14)
+Created new reaction: C4H6(28) + CH3J(2) --> C4H7J(59) + CH2JJ(14)
+Created new reaction: C4H6(28) + C2H5J(3) --> C4H7J(24) + C2H4JJ(6)
+Created new reaction: C4H6(28) + C2H5J(3) --> C4H7J(59) + C2H4JJ(6)
+Created new reaction: C2H4(7) + C4H6(28) --> C2H5J(3) + C4H5J(125)
+Created new reaction: C2H4(7) + C4H6(28) --> C2H5J(3) + C4H5J(33)
+Created new reaction: C4H6(28) + C3H7J(12) --> C4H7J(24) + C3H6JJ(16)
+Created new reaction: C4H6(28) + C3H7J(12) --> C4H7J(24) + C3H6JJ(17)
+Created new reaction: C4H6(28) + C3H7J(12) --> C4H7J(59) + C3H6JJ(16)
+Created new reaction: C4H6(28) + C3H7J(12) --> C4H7J(59) + C3H6JJ(17)
+Created new reaction: C4H6(28) + C2H3J(11) --> C4H7J(24) + C2H2JJ(23)
+Created new reaction: C4H6(28) + C2H3J(11) --> C4H7J(59) + C2H2JJ(23)
+Created new reaction: C4H6(28) + C2H2(25) --> C4H7J(24) + C2HJ(29)
+Created new reaction: C4H6(28) + C2H2(25) --> C4H7J(59) + C2HJ(29)
+Created new reaction: C4H6(28) + C4H7J(24) --> C4H7J(24) + C4H6JJ(34)
+Created new reaction: C4H6(28) + C4H7J(24) --> C4H7J(24) + C4H6JJ(35)
+Created new reaction: C4H6(28) + C4H7J(24) --> C4H7J(24) + C4H6JJ(36)
+Created new reaction: C4H6(28) + C4H7J(24) --> C4H7J(59) + C4H6JJ(34)
+Created new reaction: C4H6(28) + C4H7J(24) --> C4H7J(59) + C4H6JJ(35)
+Created new reaction: C4H6(28) + C4H7J(24) --> C4H7J(59) + C4H6JJ(36)
+Created new reaction: C4H7J(24) + C4H6(28) --> C4H8JJ(41) + C4H5J(125)
+Created new reaction: C4H7J(24) + C4H6(28) --> C4H8JJ(41) + C4H5J(33)
+Created new reaction: C4H7J(24) + C4H6(28) --> C4H8JJ(42) + C4H5J(125)
+Created new reaction: C4H7J(24) + C4H6(28) --> C4H8JJ(42) + C4H5J(33)
+Created new reaction: C4H6(28) + C4H7J(59) --> C4H7J(24) + C4H6JJ(63)
+Created new reaction: C4H6(28) + C4H7J(59) --> C4H7J(24) + C4H6JJ(34)
+Created new reaction: C4H6(28) + C4H7J(59) --> C4H7J(24) + C4H6JJ(64)
+Created new reaction: C4H6(28) + C4H7J(59) --> C4H7J(59) + C4H6JJ(63)
+Created new reaction: C4H6(28) + C4H7J(59) --> C4H7J(59) + C4H6JJ(34)
+Created new reaction: C4H6(28) + C4H7J(59) --> C4H7J(59) + C4H6JJ(64)
+Created new reaction: C4H7J(59) + C4H6(28) --> C4H8JJ(42) + C4H5J(125)
+Created new reaction: C4H7J(59) + C4H6(28) --> C4H8JJ(42) + C4H5J(33)
+Created new reaction: C4H7J(59) + C4H6(28) --> C4H8JJ(71) + C4H5J(125)
+Created new reaction: C4H7J(59) + C4H6(28) --> C4H8JJ(71) + C4H5J(33)
+Created new reaction: C4H6(28) + C4H7J(59) --> C4H7J(24) + C4H6JJ(66)
+Created new reaction: C4H6(28) + C4H7J(59) --> C4H7J(59) + C4H6JJ(66)
+Created new reaction: C4H7J(59) + C4H6(28) --> C4H8JJ(89) + C4H5J(125)
+Created new reaction: C4H7J(59) + C4H6(28) --> C4H8JJ(89) + C4H5J(33)
+Created new reaction: C4H6(28) + C4H6(28) --> C4H7J(24) + C4H5J(125)
+Created new reaction: C4H6(28) + C4H6(28) --> C4H7J(24) + C4H5J(33)
+Created new reaction: C4H6(28) + C4H6(28) --> C4H7J(59) + C4H5J(125)
+Created new reaction: C4H6(28) + C4H6(28) --> C4H7J(59) + C4H5J(33)
+Reacting C4H6(28) with the core: 1,2_Insertion
+Reacting C4H6(28) with the core: 1,1_Elimination
+Reacting C4H6(28) with the core: 1,3_Insertion_CO2
+Reacting C4H6(28) with the core: 1,2_Elimination_CO2
+Reacting C4H6(28) with the core: 1,3_Insertion_ROR
+Reacting C4H6(28) with the core: 1,2_Elimination_ROR
+Reacting C4H6(28) with the core: 1+2_Cycloaddition
+Reacting C4H6(28) with the core: Three_Ring_Cleavage
+Reacting C4H6(28) with the core: 2+2_cycloaddition_Cd
+Created new species: C6H10(140)
+Created new reaction: C4H6(28) + C2H4(7) --> C6H10(140)
+Created new species: C8H13J(141)
+Created new reaction: C4H6(28) + C4H7J(24) --> C8H13J(141)
+Created new species: C8H13J(142)
+Created new reaction: C4H6(28) + C4H7J(24) --> C8H13J(142)
+Created new species: C8H13J(143)
+Created new reaction: C4H6(28) + C4H7J(59) --> C8H13J(143)
+Created new species: C8H13J(144)
+Created new reaction: C4H6(28) + C4H7J(59) --> C8H13J(144)
+Created new species: C8H13J(145)
+Created new reaction: C4H6(28) + C4H7J(59) --> C8H13J(145)
+Created new species: C8H13J(146)
+Created new reaction: C4H6(28) + C4H7J(59) --> C8H13J(146)
+Created new species: C8H12(147)
+Created new reaction: C4H6(28) + C4H6(28) --> C8H12(147)
+Created new species: C8H12(148)
+Created new reaction: C4H6(28) + C4H6(28) --> C8H12(148)
+Reacting C4H6(28) with the core: Four_Ring_Cleavage_Cd
+Reacting C4H6(28) with the core: 2+2_cycloaddition_CO
+Reacting C4H6(28) with the core: Four_Ring_Cleavage_CO
+Reacting C4H6(28) with the core: 2+2_cycloaddition_CCO
+Reacting C4H6(28) with the core: Four_Ring_Cleavage_CCO
+Reacting C4H6(28) with the core: Diels_alder_addition
+Created new species: C6H10(149)
+Created new reaction: C2H4(7) + C4H6(28) --> C6H10(149)
+Created new species: C8H13J(150)
+Created new reaction: C4H7J(24) + C4H6(28) --> C8H13J(150)
+Created new species: C8H13J(151)
+Created new reaction: C4H7J(59) + C4H6(28) --> C8H13J(151)
+Created new species: C8H13J(152)
+Created new reaction: C4H7J(59) + C4H6(28) --> C8H13J(152)
+Created new species: C8H12(153)
+Created new reaction: C4H6(28) + C4H6(28) --> C8H12(153)
+Reacting C4H6(28) with the core: Retro_Diels_Alder_Addition
+Reacting C4H6(28) with the core: intra_H_migration
+Reacting C4H6(28) with the core: HO2_Elimination_from_PeroxyRadical
+Reacting C4H6(28) with the core: Birad_recombination
+Reacting C4H6(28) with the core: Ring_Open
+Reacting C4H6(28) with the core: Oa_R_Recombination
+Reacting C4H6(28) with the core: RO_Bond_Dissociation
+Reacting C4H6(28) with the core: R_Addition_COm
+Reacting C4H6(28) with the core: COM_Elimination_From_Carbonyl
+Reacting C4H6(28) with the core: Intra_R_Add_Exocyclic
+Reacting C4H6(28) with the core: Ring_Open_Exo_Cycli_Radical
+Reacting C4H6(28) with the core: Intra_R_Add_Endocyclic
+Reacting C4H6(28) with the core: Ring_Open_Endo_Cycli_Radical
+Reacting C4H6(28) with the core: 1,2-Birad_to_alkene
+Reacting C4H6(28) with the core: Alkene_to_1,2-birad
+Created new reaction: C4H6(28) --> C4H6JJ(34)
+Memory used: 85000192
+Free memory: 45401984
+Solving reaction system...
+ODE solver integrated to 2.571805555873812E-4 sec.
+After ODE: from 0.0 SEC to 2.571805555873812E-4SEC
+Sp.#	Name         	Concentration 	Flux
+   1	C2H6         	 8.988824E-07 	-3.967782E-03
+   2	CH3J         	 2.856551E-10 	-5.439444E-07
+   3	C2H5J        	 2.067880E-09 	-5.286930E-06
+   5	CH4          	 2.316687E-07 	 2.926877E-04
+   4	HJ           	 5.802176E-10 	-1.317721E-06
+   7	C2H4         	 3.078659E-06 	-4.110263E-04
+  10	H2           	 4.207055E-06 	 2.568085E-03
+  12	C3H7J        	 2.065545E-13 	-4.208976E-10
+  11	C2H3J        	 2.570587E-10 	-1.158959E-08
+  25	C2H2         	 5.813118E-07 	 1.448115E-03
+  24	C4H7J        	 5.759012E-12 	-6.316093E-10
+  59	C4H7J        	 9.765780E-11 	 3.279964E-08
+  28	C4H6         	 2.673954E-08 	 7.704862E-05
+For reaction system: 1 out of 1
+At this time: 2.571805555873812E-4SEC
+Conversion of C2H6 is:0.9004296496609261
+Running Time is: 0.3991 minutes.
+The model core has 31 reactions and 13 species.
+The model edge has 224 reactions and 140 species.
+After garbage collection:
+Memory used: 85000192
+Free memory: 48873336
+For reaction system: 1 out of 1
+At this reaction time: 2.571805555873812E-4SEC
+Conversion of C2H6 is:0.9004296496609261
+Memory used: 85000192
+Free memory: 48524544
+The model core has 31 reactions and 13 species.
+The model edge has 224 reactions and 140 species.
+Model Generation Completed

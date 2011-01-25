@@ -1,0 +1,16 @@
+Ar                 0   136.500     3.330     0.000     0.000     0.000 !CHEMKIN-v4.1.1
+He                 0    10.200     2.576     0.000     0.000     0.000 !CHEMKIN-v4.1.1
+N2                 1    97.530     3.621     0.000     1.760     4.000 !CHEMKIN-v4.1.1
+C2H6(1)            2   252.300     4.302     0.000     0.000     1.500 ! Primary Transport Library: GRIMech3.0 (Species ID: C2H6)	
+CH3J(2)            2   144.000     3.800     0.000     0.000     0.000 ! Primary Transport Library: GRIMech3.0 (Species ID: CH3)	
+C2H5J(3)           2   252.300     4.302     0.000     0.000     1.500 ! Primary Transport Library: GRIMech3.0 (Species ID: C2H5)	
+CH4(5)             2   141.400     3.746     0.000     2.600    13.000 ! Primary Transport Library: GRIMech3.0 (Species ID: CH4)	
+HJ(4)              0   145.000     2.050     0.000     0.000     0.000 ! Primary Transport Library: GRIMech3.0 (Species ID: H)	
+C2H4(7)            2   280.800     3.971     0.000     0.000     1.500 ! Primary Transport Library: GRIMech3.0 (Species ID: C2H4)	
+H2(10)             1    38.000     2.920     0.000     0.790   280.000 ! Primary Transport Library: GRIMech3.0 (Species ID: H2)	
+C3H7J(12)          2   266.800     4.982     0.000     0.000     1.000 ! Primary Transport Library: GRIMech3.0 (Species ID: N*C3H7)	
+C2H3J(11)          2   209.000     4.100     0.000     0.000     1.000 ! Primary Transport Library: GRIMech3.0 (Species ID: C2H3)	 ! *
+C2H2(25)           1   209.000     4.100     0.000     0.000     2.500 ! Primary Transport Library: GRIMech3.0 (Species ID: C2H2)	
+C4H7J(24)          2   322.495     5.306     0.000     0.000     1.000 ! LJ parameters estimated by RMG: Tc= 452.254K Pc=  42.831bar Vc= 240.500cm3/mol Tb= 287.600K	(CsH2R2, CsH3R, CdHR2, CdH2R)
+C4H7J(59)          2   334.370     5.329     0.000     0.000     1.000 ! LJ parameters estimated by RMG: Tc= 466.018K Pc=  43.397bar Vc= 239.500cm3/mol Tb= 295.080K	(CdHR2, CsH3R, CdHR2, CsH3R)
+C4H6(28)           2   357.000     5.180     0.000     0.000     1.000 ! Primary Transport Library: GRIMech3.0 (Species ID: CH2CHCHCH2)	 ! JAM
